@@ -18,8 +18,9 @@ class BarangController extends Controller
         //
         // $barangs = Barang::all();
         // return view('admin.master.barang.index', compact('barangs'));
-
-        return view('admin.master.barang.index');
+        $acc = 'here show';
+        $barang_menu = 'active';
+        return view('admin.master.barang.index',compact('barang_menu','acc'));
     }
 
     /**
