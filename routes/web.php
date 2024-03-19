@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Master\BarangController;
+use App\Http\Controllers\Admin\Project\ProjectController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,15 @@ Route::controller(BarangController::class)->middleware('auth')->prefix('admin/ma
     Route::delete('/delete/{id}', 'destroy')->name('delete');
 });
 
+Route::controller(ProjectController::class)->middleware('auth')->prefix('admin/project/project')->name('admin.project.project.')->group(function () {
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+});
 
 
 require __DIR__ . '/auth.php';
