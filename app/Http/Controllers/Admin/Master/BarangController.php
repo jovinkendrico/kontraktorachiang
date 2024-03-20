@@ -16,11 +16,11 @@ class BarangController extends Controller
     public function index()
     {
         //
-        // $barangs = Barang::all();
+        $barangs = Barang::all();
         // return view('admin.master.barang.index', compact('barangs'));
         $acc = 'here show';
         $barang_menu = 'active';
-        return view('admin.master.barang.index',compact('barang_menu','acc'));
+        return view('admin.master.barang.index',compact('barang_menu','acc','barangs'));
     }
 
     /**
@@ -29,7 +29,9 @@ class BarangController extends Controller
     public function create()
     {
         //
-        return view('admin.master.barang.create');
+        $acc = 'here show';
+        $barang_menu = 'active';
+        return view('admin.master.barang.create',compact('acc','barang_menu'));
     }
 
     /**
@@ -37,7 +39,6 @@ class BarangController extends Controller
      */
     public function store(StoreBarangRequest $request)
     {
-        //
         $barang = $request->validated();
         Barang::insert($barang);
         return redirect()->route('admin.master.barang.index');
@@ -49,8 +50,10 @@ class BarangController extends Controller
     public function show(string $id)
     {
         //
+        $acc = 'here show';
+        $barang_menu = 'active';
         $barang = Barang::findOrFail($id);
-        return view('admin.master.barang.show', compact('barang'));
+        return view('admin.master.barang.show', compact('acc','barang_menu','barang'));
     }
 
     /**
@@ -59,6 +62,8 @@ class BarangController extends Controller
     public function edit(string $id)
     {
         //
+        $acc = 'here show';
+        $barang_menu = 'active';
         $barang = Barang::findOrFail($id);
         return view('admin.master.barang.edit', compact('barang'));
     }
@@ -69,6 +74,8 @@ class BarangController extends Controller
     public function update(UpdateBarangRequest $request, string $id)
     {
         //
+        $acc = 'here show';
+        $barang_menu = 'active';
         $barang = $request->validated();
         Barang::findOrFail($id)->update($barang);
         return redirect()->route('admin.master.barang.index');
@@ -80,6 +87,8 @@ class BarangController extends Controller
     public function destroy(string $id)
     {
         //
+        $acc = 'here show';
+        $barang_menu = 'active';
         $barang = Barang::findOrFail($id)->delete();
         return redirect()->route('admin.master.barang.index');
     }

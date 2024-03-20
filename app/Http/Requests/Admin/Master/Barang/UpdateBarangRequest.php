@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Master\Barang;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateBarangRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateBarangRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
