@@ -10,13 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('pembelian_barangs', function (Blueprint $table) {
+        Schema::create('detail_pembelian_barangs', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal');
-            $table->foreignId('project_id')->constrained();
-            $table->string('supplier');
-            $table->string('status');
-            $table->date('jatuh_tempo');
+            $table->foreignId('pembelian_barang_id')->constrained();
+            $table->foreignId('barang_id')->constrained();
+            $table->string('merk');
+            $table->bigInteger('qty');
+            $table->string('uom');
+            $table->bigInteger('harga');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +28,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembelian_barangs');
+        Schema::dropIfExists('detail_pembelian_barangs');
     }
 };
