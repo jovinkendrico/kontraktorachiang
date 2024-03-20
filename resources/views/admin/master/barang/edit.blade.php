@@ -43,14 +43,14 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-5">
                     <!--begin::Form-->
-                    <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST" action="{{route('admin.master.barang.edit',$barang->id)}}" enctype="multipart/form-data">
+                    <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST" action="{{route('admin.master.barang.update',$barang->id)}}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!--begin::Input group-->
                         <div class="fv-row mb-7 fv-plugins-icon-container">
                             <!--begin::Label-->
                             <div class="col-md-4">
-                                <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'" :type="'text'" :placeholder="'Masukkan nama barang...'" :value="'{{$barang->nama}}'" />
+                                <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'" :type="'text'" :placeholder="'Masukkan nama barang...'" :value="$barang->nama" />
                                 <x-forms.input-error name="nama" />
                             </div>
                         </div>
