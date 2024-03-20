@@ -74,7 +74,7 @@ class ProjectController extends Controller
         //
         $project = $request->validated();
         Project::findOrFail($id)->update($project);
-        return redirect()->route('admin.project.project.create');
+        return redirect()->route('admin.project.project.index');
 
     }
 

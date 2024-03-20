@@ -91,7 +91,7 @@
                                         {{ $project->lokasi }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $project->harga }}
+                                        Rp. {{number_format($project->totalharga, 0, ',', '.')}}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
