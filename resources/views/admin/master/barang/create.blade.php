@@ -51,7 +51,7 @@
                             <!--begin::Label-->
                             <div class="col-md-4">
                                 <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'"
-                                    :type="'text'" :placeholder="'Masukkan nama barang...'" :value="'nama'" />
+                                    :type="'text'" :placeholder="'Masukkan nama barang...'" :func="''" :isiFunc="''" :value="''" />
                                 <x-forms.input-error name="nama" />
                             </div>
                         </div>

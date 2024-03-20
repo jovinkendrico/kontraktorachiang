@@ -146,21 +146,29 @@
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('admin.master.barang.show', $barang->id) }}"
-                                                    class="menu-link px-3">Show</a>
-                                            </div>
-                                            <div class="menu-item px-3">
-                                                <a href="{{ route('admin.master.barang.edit', $barang->id) }}"
-                                                    class="menu-link px-3">Edit</a>
-                                            </div>
-                                            <div class="menu-item px-3">
-                                                <button type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#delete{{ $barang->id }}"
-                                                    class="btn btn-danger btn-sm delete">
-                                                    <i class="fas fa-trash"></i>Delete
-                                                </button>
-                                            </div>
+                                            <!--begin::Badges-->
+                                            @if (is_null($barang->deleted_at))
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.master.barang.show', $barang->id) }}"
+                                                        class="menu-link px-3">Show</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.master.barang.edit', $barang->id) }}"
+                                                        class="menu-link px-3">Edit</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <button type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#delete{{ $barang->id }}"
+                                                        class="btn btn-danger btn-sm delete">
+                                                        <i class="fas fa-trash"></i>Delete
+                                                    </button>
+                                                </div>
+                                            @else
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.master.barang.show', $barang->id) }}"
+                                                        class="menu-link px-3">Show</a>
+                                                </div>
+                                            @endif
                                             <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu-->

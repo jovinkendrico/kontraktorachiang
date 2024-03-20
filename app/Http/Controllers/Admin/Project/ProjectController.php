@@ -16,8 +16,10 @@ class ProjectController extends Controller
     public function index()
     {
         //
+        $project_acc = 'here show';
+        $project_menu = 'active';
         $projects = Project::all();
-        return view('admin.project.project.index', compact('projects'));
+        return view('admin.project.project.index', compact('project_acc','project_menu','projects'));
     }
 
     /**
@@ -26,7 +28,9 @@ class ProjectController extends Controller
     public function create()
     {
         //
-        return view('admin.project.project.create');
+        $project_acc = 'here show';
+        $project_menu = 'active';
+        return view('admin.project.project.create',compact('project_acc','project_menu'));
     }
 
     /**
@@ -37,7 +41,7 @@ class ProjectController extends Controller
         //
         $project = $request->validated();
         Project::insert($project);
-        return redirect()->route('admin.project.project.create');
+        return redirect()->route('admin.project.project.index');
     }
 
     /**
@@ -56,8 +60,10 @@ class ProjectController extends Controller
     public function edit(string $id)
     {
         //
+        $project_acc = 'here show';
+        $project_menu = 'active';
         $project = Project::findOrFail($id);
-        return view('admin.project.project.edit', compact('project'));
+        return view('admin.project.project.edit', compact('project_acc','project_menu','project'));
     }
 
     /**
