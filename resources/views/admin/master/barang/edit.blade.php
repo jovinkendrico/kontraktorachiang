@@ -50,7 +50,7 @@
                         <div class="fv-row mb-7 fv-plugins-icon-container">
                             <!--begin::Label-->
                             <div class="col-md-4">
-                                <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'" :type="'text'" :placeholder="'Masukkan nama barang...'" :value="$barang->nama" />
+                                <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'" :type="'text'" :placeholder="'Masukkan nama barang...'" :func="''" :isiFunc="''" :value="$barang->nama" />
                                 <x-forms.input-error name="nama" />
                             </div>
                         </div>
