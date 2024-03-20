@@ -19,8 +19,8 @@ class PembelianBarangController extends Controller
         //
         $pembelianbarangs = PembelianBarang::all();
         $acc = 'here show';
-        $barang_menu = 'active';
-        return view('admin.project.pembelianbarang.index', compact('barang_menu', 'acc', 'pembelianbarangs'));
+        $pembelian_barang_menu = 'active';
+        return view('admin.project.pembelianbarang.index', compact('pembelian_barang_menu', 'acc', 'pembelianbarangs'));
     }
 
     /**
@@ -30,8 +30,8 @@ class PembelianBarangController extends Controller
     {
         //
         $acc = 'here show';
-        $barang_menu = 'active';
-        return view('admin.project.pembelianbarang.create', compact('acc', 'barang_menu'));
+        $pembelian_barang_menu = 'active';
+        return view('admin.project.pembelianbarang.create', compact('acc', 'pembelian_barang_menu'));
     }
 
     /**
@@ -51,9 +51,9 @@ class PembelianBarangController extends Controller
     {
         //
         $acc = 'here show';
-        $barang_menu = 'active';
+        $pembelian_barang_menu = 'active';
         $pembelianbarang = PembelianBarang::findOrFail($id);
-        return view('admin.project.pembelianbarang.show', compact('acc', 'barang_menu', 'pembelianbarang'));
+        return view('admin.project.pembelianbarang.show', compact('acc', 'pembelian_barang_menu', 'pembelianbarang'));
     }
 
     /**
@@ -63,9 +63,9 @@ class PembelianBarangController extends Controller
     {
         //
         $acc = 'here show';
-        $barang_menu = 'active';
+        $pembelian_barang_menu = 'active';
         $pembelianbarang = PembelianBarang::findOrFail($id);
-        return view('admin.project.pembelianbarang.edit', compact('pembelianbarang', 'acc', 'barang_menu'));
+        return view('admin.project.pembelianbarang.edit', compact('pembelianbarang', 'acc', 'pembelian_barang_menu'));
     }
 
     /**
