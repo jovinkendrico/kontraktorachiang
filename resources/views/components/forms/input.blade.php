@@ -3,7 +3,7 @@
         <span class="{{$required}}">{{ $label }}</span>
     </label>
 
-    <input type="{{$type}}" class="form-control form-control-solid" :name="$name"  :id="$id"
+    <input type="{{$type}}" class="form-control form-control-solid" name="{{$name}}"  :id="$id"
         value="{{$value}}"
         placeholder="{{$placeholder}}"/>
 </div>

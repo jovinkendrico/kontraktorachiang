@@ -49,7 +49,7 @@
                         <div class="fv-row mb-7 fv-plugins-icon-container">
                             <!--begin::Label-->
                             <div class="col-md-4">
-                                <x-forms.input id="nama" label="Nama Barang" :required="'required'" name="nama" :type="'text'" :placeholder="'Masukkan nama barang...'" :value="''"/>
+                                <x-forms.input id="nama" label="Nama Barang" :required="'required'" :name="'nama'" :type="'text'" :placeholder="'Masukkan nama barang...'" :value="''" />
                                 <x-forms.input-error name="nama" />
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                             <button class="btn btn-light me-3"><a href="{{route('admin.master.barang.index')}}">Cancel</a></button>
                             <!--end::Button-->
                             <!--begin::Button-->
-                            <button type="submit" class="btn btn-primary">Sumit</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                             <!--end::Button-->
                         </div>
 
