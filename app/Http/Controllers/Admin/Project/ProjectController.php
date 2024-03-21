@@ -16,10 +16,13 @@ class ProjectController extends Controller
     public function index()
     {
         //
+
         $project_acc = 'here show';
         $project_menu = 'active';
         $projects = Project::withTrashed()->get();
-        return view('admin.project.project.index', compact('project_acc', 'project_menu', 'projects'));
+
+        return view('admin.project.project.index', compact('project_acc','project_menu','projects'));
+
     }
 
     /**
