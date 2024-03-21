@@ -20,7 +20,9 @@ class ProjectController extends Controller
         $project_acc = 'here show';
         $project_menu = 'active';
         $projects = Project::withTrashed()->get();
+
         return view('admin.project.project.index', compact('project_acc','project_menu','projects'));
+
     }
 
     /**
@@ -31,7 +33,7 @@ class ProjectController extends Controller
         //
         $project_acc = 'here show';
         $project_menu = 'active';
-        return view('admin.project.project.create',compact('project_acc','project_menu'));
+        return view('admin.project.project.create', compact('project_acc', 'project_menu'));
     }
 
     /**
@@ -64,7 +66,7 @@ class ProjectController extends Controller
         $project_acc = 'here show';
         $project_menu = 'active';
         $project = Project::findOrFail($id);
-        return view('admin.project.project.edit', compact('project_acc','project_menu','project'));
+        return view('admin.project.project.edit', compact('project_acc', 'project_menu', 'project'));
     }
 
     /**
