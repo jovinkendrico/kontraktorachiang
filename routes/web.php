@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::view('/pembelian', 'admin/project/pembelianbarang/create');
 
 Route::controller(BarangController::class)->middleware('auth')->prefix('admin/master/barang')->name('admin.master.barang.')->group(function () {
     Route::get('/index', 'index')->name('index');
