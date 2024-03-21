@@ -193,6 +193,7 @@
     <script src="/Template/dist/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
     <script src="/Template/dist/assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="/Template/dist/assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="/Template/dist/assets/js/custom/apps/invoices/create.js"></script>
     <!--end::Page Custom Javascript-->
     <script>
         $("#kt_datatable_example_5").DataTable({
