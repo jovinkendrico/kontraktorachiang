@@ -91,7 +91,7 @@
                                         {{ $project->lokasi }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        Rp. {{number_format($project->totalharga, 0, ',', '.')}}
+                                        Rp. {{ number_format($project->totalharga, 0, ',', '.') }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
@@ -124,7 +124,7 @@
                                             <!--begin::Badges-->
                                             @if (is_null($project->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
@@ -140,7 +140,7 @@
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                             @endif
