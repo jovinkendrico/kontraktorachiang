@@ -75,7 +75,7 @@
                         <div class="d-flex justify-content-end">
                             <!--begin::Button-->
                             <button class="btn btn-light me-3"><a
-                                    href="{{ route('admin.master.barang.index') }}">Cancel</a></button>
+                                    href="{{ route('admin.project.project.index') }}">Cancel</a></button>
                             <!--end::Button-->
                             <!--begin::Button-->
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -102,18 +102,4 @@
         <!--end::Container-->
     </div>
     <!--end::Post-->
-    <script>
-        function formatNumber() {
-            let inputField = document.getElementsById('totalharga').value;
-
-            // Remove non-numeric characters from the input value
-            let numericValue = inputField.value.replace(/\D/g, "");
-
-            // Format the numeric value with the thousands separators
-            let formattedValue = `${numericValue.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}`;
-
-            // Update the input field value with the formatted value
-            inputField.value = formattedValue;
-        }
-    </script>
 @endsection

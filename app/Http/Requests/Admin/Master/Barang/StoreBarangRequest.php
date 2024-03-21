@@ -23,7 +23,8 @@ class StoreBarangRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'required|unique:barangs,nama|max:255'
+            'nama' => 'required|unique:barangs,nama|max:255',
+            
         ];
     }
 }
