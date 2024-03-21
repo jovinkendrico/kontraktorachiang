@@ -16,9 +16,10 @@ class ProjectController extends Controller
     public function index()
     {
         //
+
         $project_acc = 'here show';
         $project_menu = 'active';
-        $projects = Project::all();
+        $projects = Project::withTrashed()->get();
         return view('admin.project.project.index', compact('project_acc','project_menu','projects'));
     }
 
@@ -85,6 +86,6 @@ class ProjectController extends Controller
     {
         //
         Project::findOrFail($id)->delete();
-        return redirect()->route('admin.project.project.create');
+        return redirect()->route('admin.project.project.index');
     }
 }
