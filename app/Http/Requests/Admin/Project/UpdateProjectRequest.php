@@ -5,6 +5,7 @@ namespace App\Http\Requests\Admin\Project;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class UpdateProjectRequest extends FormRequest
 {
     /**
@@ -22,12 +23,11 @@ class UpdateProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('id');
         return [
             //
-            'nama' => 'required|unique:projects,nama,' . $id . '|max:255',
-            'lokasi' => 'required|max:255',
-            'totalharga' => 'required|max:255',
+            'nama' => 'required',
+            'lokasi' => 'required',
+            'totalharga' => 'required',
         ];
     }
 }
