@@ -43,8 +43,9 @@
                 <!--begin::Card body-->
                 <div class="card-body pt-5">
                     <!--begin::Form-->
-                    <form class="form fv-plugins-bootstrap5 fv-plugins-framework" method="POST"
-                        action="{{ route('admin.project.project.update',$project->id) }}" enctype="multipart/form-data">
+                    <form id="form" name="form" class="form fv-plugins-bootstrap5 fv-plugins-framework"
+                        method="POST" action="{{ route('admin.project.project.update', $project->id) }}"
+                        enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <!--begin::Input group-->
@@ -62,7 +63,7 @@
                                 <x-forms.input-error name="lokasi" />
 
                                 <x-forms.input :id="'totalharga'" label="Total harga" :required="'required'" :name="'totalharga'"
-                                    :type="'number'" :placeholder="'Masukkan Total harga...'" :func="''" :isiFunc="''"
+                                    :type="'text'" :placeholder="'Masukkan Total harga...'" :func="''" :isiFunc="''"
                                     :value="$project->totalharga" />
                                 <x-forms.input-error name="totalharga" />
 
@@ -104,3 +105,29 @@
     </div>
     <!--end::Post-->
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        maskingNumber()
+
+        function formatNumber(number) {
+            return number.toLocaleString('id-ID', {
+                maximumFractionDigits: 0
+            });
+        }
+
+        function maskingNumber() {
+            var totalharga = parseInt($('#totalharga').val().replace(/\D/g, ''), 10);
+            $('#totalharga').val(formatNumber(totalharga));
+        }
+
+        $('#totalharga').on('input', function() {
+            maskingNumber();
+        });
+        $('#form').on('submit', function() {
+            var totalharga = $('#totalharga').val().replaceAll('.', '');
+            $('#totalharga').val(totalharga)
+        });
+    });
+</script>
