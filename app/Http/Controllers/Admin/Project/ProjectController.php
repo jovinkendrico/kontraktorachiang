@@ -90,4 +90,13 @@ class ProjectController extends Controller
         Project::findOrFail($id)->delete();
         return redirect()->route('admin.project.project.index');
     }
+
+    public function restore(string $id)
+    {
+        //
+        $project = Project::withTrashed()->find($id);
+        $project->restore();
+        return redirect()->route('admin.project.project.index');
+
+    }
 }
