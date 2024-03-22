@@ -14,10 +14,10 @@ class PembelianBarangController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(string $id)
     {
         //
-        $pembelianbarangs = PembelianBarang::all();
+        $pembelianbarangs = PembelianBarang::where('project_id', $id)->get();
         $acc = 'here show';
         $pembelian_barang_menu = 'active';
         return view('admin.project.pembelianbarang.index', compact('pembelian_barang_menu', 'acc', 'pembelianbarangs'));
