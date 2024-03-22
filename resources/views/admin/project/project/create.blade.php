@@ -52,17 +52,17 @@
                             <div class="col-md-4">
                                 <x-forms.input id="nama" label="Nama" :required="'required'" :name="'nama'"
                                     :type="'text'" :placeholder="'Masukkan nama project...'" :func="''" :isiFunc="''"
-                                    :value="''" />
+                                    :value=" old('nama') !== null ? old('nama') : '' " />
                                 <x-forms.input-error name="nama" />
 
                                 <x-forms.input id="lokasi" label="Lokasi" :required="'required'" :name="'lokasi'"
                                     :type="'text'" :placeholder="'Masukkan lokasi...'" :func="''" :isiFunc="''"
-                                    :value="''" />
+                                    :value=" old('lokasi') !== null ? old('lokasi') : '' " />
                                 <x-forms.input-error name="lokasi" />
 
                                 <x-forms.input :id="'totalharga'" label="Total harga" :required="'required'" :name="'totalharga'"
                                     :type="'text'" :placeholder="'Masukkan Total harga...'" :func="''" :isiFunc="''"
-                                    :value="''" />
+                                    :value=" old('totalharga') !== null ? old('totalharga') : '' " />
                                 <x-forms.input-error name="totalharga" />
 
                             </div>

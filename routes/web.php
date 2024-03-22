@@ -26,6 +26,7 @@ Route::controller(BarangController::class)->middleware('auth')->prefix('admin/ma
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
 });
 
 Route::controller(ProjectController::class)->middleware('auth')->prefix('admin/project/project')->name('admin.project.project.')->group(function () {
@@ -36,6 +37,7 @@ Route::controller(ProjectController::class)->middleware('auth')->prefix('admin/p
     Route::get('/edit/{id}', 'edit')->name('edit');
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('delete');
+    Route::get('/restore/{id}', 'restore')->name('restore');
 });
 
 

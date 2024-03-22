@@ -88,4 +88,13 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id)->delete();
         return redirect()->route('admin.master.barang.index');
     }
+
+    public function restore(string $id)
+    {
+        //
+        $barang = Barang::withTrashed()->find($id);
+        $barang->restore();
+        return redirect()->route('admin.master.barang.index');
+
+    }
 }

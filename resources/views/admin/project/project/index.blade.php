@@ -143,6 +143,10 @@
                                                     <a href="{{ route('admin.project.project.show', $project->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.project.project.restore', $project->id) }}"
+                                                        class="menu-link px-3">Restore</a>
+                                                </div>
                                             @endif
                                             <!--end::Menu item-->
                                         </div>
