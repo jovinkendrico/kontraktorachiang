@@ -292,7 +292,7 @@
                                                     <td class="pe-7">
                                                         {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
                                                         <select class="form-control form-select mb-2"
-                                                            data-control="select2" data-hide-search="true"
+                                                            data-control="select" data-hide-search=""
                                                             data-placeholder="Select an option" name="name[]">
                                                             <option>--Pilih Barang--</option>
                                                             <option value="Barang 1">Barang 1</option>
@@ -384,8 +384,8 @@
                                             <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
                                                 <td class="pe-7">
                                                     {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
-                                                    <select class="form-control form-select mb-2" data-control="select2"
-                                                        data-hide-search="true" data-placeholder="Select an option"
+                                                    <select class="form-control form-select mb-2" data-control="select"
+                                                        data-hide-search="false" data-placeholder="Select an option"
                                                         name="name[]">
                                                         <option>--Pilih Barang--</option>
                                                         <option value="Barang 1">Barang 1</option>
@@ -472,21 +472,6 @@
 
 <script>
     $(document).ready(function() {
-        $('[data-kt-element="add-item"]').click(function() {
-            // Clone the template row
-            var newRow = $('[data-kt-element="item-template"]').find('tr').clone();
-
-            // Append the cloned row to the table body
-            $('[data-kt-element="items"]').find('tbody').append(newRow);
-
-            // Initialize any plugins or custom behavior for the new row elements here
-
-            // Ensure select2 is properly initialized for the select element
-            $('[data-kt-element="items"]').find('select[data-control="select2"]').select2({
-                minimumResultsForSearch: -1 // Hide search box
-            });
-        });
-
         function formatNumber(number) {
             return number.toLocaleString('id-ID', {
                 maximumFractionDigits: 0
