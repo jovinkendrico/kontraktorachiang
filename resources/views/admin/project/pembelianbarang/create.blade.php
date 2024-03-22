@@ -241,7 +241,7 @@
                                                 <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
                                                     <td class="pe-7">
                                                         {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
-                                                        <select class="form-control form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" name="name[]">
+                                                        <select class="form-control form-select mb-2" data-control="select2" data-hide-search="" data-placeholder="Select an option" name="name[]">
                                                             <option>--Pilih Barang--</option>
                                                             <option value="Barang 1">Barang 1</option>
                                                             <option value="Barang 2">Barang 2</option>
@@ -307,7 +307,7 @@
                                         <tbody><tr class="border-bottom border-bottom-dashed" data-kt-element="item">
                                             <td class="pe-7">
                                                 {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
-                                                <select class="form-control form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" name="name[]">
+                                                <select class="form-control form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="Select an option" name="name[]">
                                                     <option>--Pilih Barang--</option>
                                                     <option value="Barang 1">Barang 1</option>
                                                     <option value="Barang 2">Barang 2</option>
