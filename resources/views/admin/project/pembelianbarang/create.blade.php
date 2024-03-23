@@ -194,16 +194,7 @@
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Input group-->
-                                    <!--begin::Input group-->
-                                    <div class="d-flex flex-center flex-equal fw-row text-nowrap order-1 order-xxl-2 me-4"
-                                        data-bs-toggle="tooltip" data-bs-trigger="hover" title=""
-                                        data-bs-original-title="Enter invoice number">
-                                        <span class="fs-2x fw-bolder text-gray-800">Invoice #</span>
-                                        <input type="text"
-                                            class="form-control form-control-flush fw-bolder text-muted fs-3 w-125px"
-                                            value="Isi Dari Database" placehoder="...">
-                                    </div>
-                                    <!--end::Input group-->
+
                                     <!--begin::Input group-->
                                     <div class="d-flex align-items-center justify-content-end flex-equal order-3 fw-row"
                                         data-bs-toggle="tooltip" data-bs-trigger="hover" title=""
@@ -253,16 +244,6 @@
                                                     placeholder="Name Supplier">
                                             </div>
                                             <!--end::Input group-->
-                                            {{-- <!--begin::Input group-->
-                                            <div class="mb-5">
-                                                <input type="text" class="form-control form-control-solid" placeholder="Email">
-                                            </div>
-                                            <!--end::Input group-->
-                                            <!--begin::Input group-->
-                                            <div class="mb-5">
-                                                <textarea name="notes" class="form-control form-control-solid" rows="3" placeholder="Who is this invoice from?"></textarea>
-                                            </div>
-                                            <!--end::Input group--> --}}
                                         </div>
                                         <!--end::Col-->
 
@@ -270,33 +251,7 @@
                                     <div class="border-bottom border-bottom-dashed text-end">
 
                                     </div>
-                                    {{-- <div class="row">
-                                        <div class="col-sm-3">
-                                            <label class="fs-6 fw-bold form-label mt-3">Item</label>
-                                            <select class="form-select mb-2 select2-hidden-accessible" data-control="select2" data-hide-search="" data-placeholder="Select an option" id="kt_ecommerce_add_category_store_template" data-select2-id="select2-data-kt_ecommerce_add_category_store_template" tabindex="-1" aria-hidden="true">
-                                                <option value="default">-- Pilih Barang--</option>
-                                                <option value="electronics" >Electronics</option>
-                                                <option value="office" >Office stationary</option>
-                                                <option value="fashion">Fashion</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
-                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <label class="fs-6 fw-bold form-label mt-3">Qty</label>
-                                            <input type="number" name="qty" class="form-control mb-2" placeholder="Qty" value="">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
-                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
-                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
-                                        </div>
-                                    </div> --}}
+
                                     <div class="table-responsive mb-10">
                                         <!--begin::Table-->
                                         <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700">
@@ -319,7 +274,7 @@
                                                     <select class="form-select mb-2 select2-hidden-accessible"
                                                         id="nama" data-control="select2" data-hide-search=""
                                                         data-placeholder="Select an option" tabindex="-1"
-                                                        aria-hidden="true">
+                                                        aria-hidden="true" on="resetSelect()">
                                                         <option disabled selected value>-- Pilih Barang--</option>
                                                         @foreach ($barangs as $barang)
                                                             <option value="{{ $barang->id }}">{{ $barang->nama }}
@@ -396,29 +351,6 @@
 
                                         </div>
                                         <div class="col-md-4">
-                                            {{-- <div class="table-responsive mb-10">
-                                                <tr class="border-top border-top-dashed align-top fs-6 fw-bolder text-gray-700">
-                                                    <th class="text-primary">
-
-                                                    </th>
-                                                    <th colspan="2" class="border-bottom border-bottom-dashed ps-0">
-                                                        <div class="d-flex flex-column align-items-start">
-                                                            <div class="fs-5">Subtotal</div>
-                                                        </div>
-                                                    </th>
-                                                    <th colspan="2">
-
-                                                    </th>
-                                                </tr>
-                                                <tr class="align-top fw-bolder text-gray-700">
-                                                    <th></th>
-                                                    <th colspan="2" class="fs-4 ps-0"><b>Total</b></th>
-                                                    <th colspan="2" class="text-end fs-4 text-nowrap">
-                                                        <input class="form-control form-control-solid" id="total"
-                                                        type="text" name="total" placeholder="total" value="Rp. 0.00" readonly>
-                                                    </th>
-                                                </tr>
-                                                </div> --}}
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
@@ -437,6 +369,17 @@
                                     </div>
 
 
+                                    <div class="separator separator-dashed my-10"></div>
+                                        <!--begin::Action buttons-->
+                                        <div class="d-flex justify-content-end">
+                                            <!--begin::Button-->
+                                            <button class="btn btn-light me-3"><a
+                                                    href="">Cancel</a></button>
+                                            <!--end::Button-->
+                                            <!--begin::Button-->
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                            <!--end::Button-->
+                                        </div>
                                 </div>
                                 <!--end::Wrapper-->
                             </form>
@@ -522,6 +465,7 @@
         console.log(tableToJSON(document.getElementById('itemTable')))
     }
 
+
     function addRow() {
         // const data = [];
         // Get values from the input fields
@@ -569,7 +513,7 @@
 
 
         // Clear input fields after adding a row
-        nama.value = "";
+        nama.value="";
         merk.value = "";
         qty.value = "";
         uom.value = "";
