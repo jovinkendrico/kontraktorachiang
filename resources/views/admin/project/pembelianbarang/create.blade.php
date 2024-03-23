@@ -513,7 +513,7 @@
 
 
         // Clear input fields after adding a row
-        nama.value="";
+        $("#nama").empty();
         merk.value = "";
         qty.value = "";
         uom.value = "";
