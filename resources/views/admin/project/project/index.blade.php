@@ -124,8 +124,16 @@
                                             <!--begin::Badges-->
                                             @if (is_null($project->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
                                                         class="menu-link px-3">Show</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                        class="menu-link px-3">Pembelian</a>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <a href="{{ route('admin.project.kaskeluar.index', $project->id) }}"
+                                                        class="menu-link px-3">Kas Keluar</a>
                                                 </div>
                                                 <div class="menu-item px-3">
                                                     <a href="{{ route('admin.project.project.edit', $project->id) }}"
@@ -140,7 +148,7 @@
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
