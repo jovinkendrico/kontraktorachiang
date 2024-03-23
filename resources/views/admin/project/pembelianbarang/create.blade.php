@@ -320,10 +320,11 @@
                                                         id="nama" data-control="select2" data-hide-search=""
                                                         data-placeholder="Select an option" tabindex="-1"
                                                         aria-hidden="true">
-                                                        <option>-- Pilih Barang--</option>
-                                                        <option value="Barang 1">Barang 1</option>
-                                                        <option value="Barang 2">Barang 2</option>
-                                                        <option value="Barang 3">Barang 3</option>
+                                                        <option disabled selected value>-- Pilih Barang--</option>
+                                                        @foreach ($barangs as $barang)
+                                                            <option value="{{ $barang->id }}">{{ $barang->nama }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="ps-0">

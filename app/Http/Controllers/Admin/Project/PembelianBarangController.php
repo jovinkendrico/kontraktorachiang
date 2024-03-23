@@ -32,8 +32,8 @@ class PembelianBarangController extends Controller
         //
         $acc = 'here show';
         $pembelian_barang_menu = 'active';
-        $barang = Barang::all();
-        return view('admin.project.pembelianbarang.create', compact('acc', 'barang', 'pembelian_barang_menu'));
+        $barangs = Barang::all();
+        return view('admin.project.pembelianbarang.create', compact('acc', 'barangs', 'pembelian_barang_menu'));
     }
 
     /**
