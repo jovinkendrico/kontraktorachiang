@@ -320,10 +320,11 @@
                                                         id="nama" data-control="select2" data-hide-search=""
                                                         data-placeholder="Select an option" tabindex="-1"
                                                         aria-hidden="true">
-                                                        <option>-- Pilih Barang--</option>
-                                                        <option value="Barang 1">Barang 1</option>
-                                                        <option value="Barang 2">Barang 2</option>
-                                                        <option value="Barang 3">Barang 3</option>
+                                                        <option disabled selected value>-- Pilih Barang--</option>
+                                                        @foreach ($barangs as $barang)
+                                                            <option value="{{ $barang->id }}">{{ $barang->nama }}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="ps-0">
@@ -418,16 +419,20 @@
                                                     </th>
                                                 </tr>
                                                 </div> --}}
-                                                <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
-                                                <!--begin::Input group-->
-                                                <div class="mb-5">
-                                                    <input class="form-control form-control-solid" id="subtotal" type="text" name="subtotal" placeholder="Rp 0.00" value="" readonly>
-                                                </div>
-                                                <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Total</label>
-                                                <!--begin::Input group-->
-                                                <div class="mb-5">
-                                                    <input class="form-control form-control-solid" id="total" type="text" name="total" placeholder="Rp 0.00" value="" readonly>
-                                                </div>
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
+                                            <!--begin::Input group-->
+                                            <div class="mb-5">
+                                                <input class="form-control form-control-solid" id="subtotal"
+                                                    type="text" name="subtotal" placeholder="Rp 0.00" value=""
+                                                    readonly>
+                                            </div>
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Total</label>
+                                            <!--begin::Input group-->
+                                            <div class="mb-5">
+                                                <input class="form-control form-control-solid" id="total"
+                                                    type="text" name="total" placeholder="Rp 0.00" value=""
+                                                    readonly>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -457,12 +462,14 @@
     $(document).ready(function() {
         // const data = [];
         function formatNumber(number) {
-            return number.toLocaleString('id-ID',{ maximumFractionDigits: 2});
+            return number.toLocaleString('id-ID', {
+                maximumFractionDigits: 2
+            });
         }
 
         function calculateTotal() {
 
-            var harga = parseFloat($('#harga').val().replaceAll('.','') || 0);
+            var harga = parseFloat($('#harga').val().replaceAll('.', '') || 0);
             var qty = parseFloat($('#qty').val() || 0);
 
 
@@ -480,7 +487,7 @@
 
 
     function extractNumericValue(value) {
-    // Extract numeric value from a string (assuming 'Rp. xxx' format)
+        // Extract numeric value from a string (assuming 'Rp. xxx' format)
         return parseFloat(value.replace('Rp ', '').replace(',', ''));
     }
 
@@ -556,12 +563,13 @@
         cell4.innerHTML = uom.value;
         cell5.innerHTML = 'Rp ' + harga.value;
         cell6.innerHTML = 'Rp ' + total_harga.value;
-        cell7.innerHTML = '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
+        cell7.innerHTML =
+            '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
 
 
 
         // Clear input fields after adding a row
-        nama.value="";
+        nama.value = "";
         merk.value = "";
         qty.value = "";
         uom.value = "";
@@ -580,32 +588,35 @@
 
     }
 
-
-
-    function updateTotals() {
-    // Update totals
-    var table = document.getElementById("itemTable");
-    var subTotal = 0;
-    var totalHarga = 0;
-
-    for (var i = 0, row; row = table.rows[i]; i++) {
-        // Skip the header row
-        if (i === 0) {
-            continue;
-        }
-
-        var sub = parseFloat(row.cells[5].innerText.replace('Rp ', '').replaceAll('.',''));
-        var harga = parseFloat(row.cells[6].innerText.replace('Rp ', '').replaceAll('.',''));
-
-        subTotal += sub;
-        totalHarga += harga;
+    function formatNumber(number) {
+        return number.toLocaleString('id-ID', {
+            maximumFractionDigits: 2
+        });
     }
 
-    // Display totals
-    document.getElementById("subtotal").value = 'Rp ' + subTotal.toFixed(2);
-    document.getElementById("total").value = 'Rp ' + totalHarga.toFixed(2);
-}
+    function updateTotals() {
+        // Update totals
+        var table = document.getElementById("itemTable");
+        var subTotal = 0;
+        var totalHarga = 0;
 
+        for (var i = 0, row; row = table.rows[i]; i++) {
+            // Skip the header row
+            if (i === 0) {
+                continue;
+            }
+
+            var sub = parseFloat(row.cells[5].innerText.replace('Rp ', '').replaceAll('.', ''));
+            var harga = parseFloat(row.cells[6].innerText.replace('Rp ', '').replaceAll('.', ''));
+
+            subTotal += sub;
+            totalHarga += harga;
+        }
+
+        // Display totals
+        document.getElementById("subtotal").value = 'Rp ' + formatNumber(subTotal);
+        document.getElementById("total").value = 'Rp ' + formatNumber(totalHarga);
+    }
 </script>
 <script>
     $(document).ready(function() {
