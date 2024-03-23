@@ -245,7 +245,7 @@
                                     <!--begin::Row-->
                                     <div class="row gx-10 mb-5">
                                         <!--begin::Col-->
-                                        <div class="col-lg-6">
+                                        <div class="col-lg-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Supplier</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
@@ -267,187 +267,171 @@
                                         <!--end::Col-->
 
                                     </div>
+                                    <div class="border-bottom border-bottom-dashed text-end">
+
+                                    </div>
+                                    {{-- <div class="row">
+                                        <div class="col-sm-3">
+                                            <label class="fs-6 fw-bold form-label mt-3">Item</label>
+                                            <select class="form-select mb-2 select2-hidden-accessible" data-control="select2" data-hide-search="" data-placeholder="Select an option" id="kt_ecommerce_add_category_store_template" data-select2-id="select2-data-kt_ecommerce_add_category_store_template" tabindex="-1" aria-hidden="true">
+                                                <option value="default">-- Pilih Barang--</option>
+                                                <option value="electronics" >Electronics</option>
+                                                <option value="office" >Office stationary</option>
+                                                <option value="fashion">Fashion</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
+                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label class="fs-6 fw-bold form-label mt-3">Qty</label>
+                                            <input type="number" name="qty" class="form-control mb-2" placeholder="Qty" value="">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
+                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <label class="fs-6 fw-bold form-label mt-3">Merk</label>
+                                            <input type="text" name="merk" class="form-control mb-2" placeholder="Merk" value="">
+                                        </div>
+                                    </div> --}}
+                                    <div class="table-responsive mb-10">
+                                        <!--begin::Table-->
+                                        <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700">
+                                            <!--begin::Table head-->
+                                            <thead>
+                                                <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
+                                                    <th class="min-w-150 w-250">Item</th>
+                                                    <th class="min-w-100 w-200">Merk</th>
+                                                    <th class="min-w-100px w-100px">QTY</th>
+                                                    <th class="min-w-100px w-100px">Uom</th>
+                                                    <th class="min-w-150px w-150px">Harga</th>
+                                                    <th class="min-w-100px w-150px ">Total</th>
+                                                    <th class="min-w-75px w-75px ">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <!--end::Table head-->
+                                            <!--begin::Table body-->
+                                            <tbody>
+                                                <td class="pe-7">
+                                                    <select class="form-select mb-2 select2-hidden-accessible"
+                                                        id="nama" data-control="select2" data-hide-search=""
+                                                        data-placeholder="Select an option" tabindex="-1"
+                                                        aria-hidden="true">
+                                                        <option>-- Pilih Barang--</option>
+                                                        <option value="Barang 1">Barang 1</option>
+                                                        <option value="Barang 2">Barang 2</option>
+                                                        <option value="Barang 3">Barang 3</option>
+                                                    </select>
+                                                </td>
+                                                <td class="ps-0">
+                                                    <input class="form-control form-control-solid" id="merk"
+                                                        type="text" name="merk" placeholder="Merk" value="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <input class="form-control form-control-solid" id="qty"
+                                                        type="number" name="qty" placeholder="Qty" value="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <input class="form-control form-control-solid" id="uom"
+                                                        type="text" name="uom" placeholder="Uom" value="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <input class="form-control form-control-solid" id="harga"
+                                                        type="text" name="harga" placeholder="Harga"
+                                                        value="">
+                                                </td>
+                                                <td class="ps-0">
+                                                    <input class="form-control form-control-solid" id="total_harga"
+                                                        type="text" name="total_harga" placeholder="Total Harga"
+                                                        value="0" readonly>
+                                                </td>
+                                                <td class="ps-0">
+                                                    <button type="button" class="btn btn-success"
+                                                        onclick="addRow()">Tambah</button>
+                                                </td>
+                                            </tbody>
+                                            <!--end::Table body-->
+
+                                        </table>
+                                    </div>
                                     <!--end::Row-->
                                     <!--begin::Table wrapper-->
                                     <div class="table-responsive mb-10">
                                         <!--begin::Table-->
-                                        <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700"
-                                            data-kt-element="items">
+
+                                        <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="itemTable">
                                             <!--begin::Table head-->
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
+                                                    <th style="display: none;">id</th>
                                                     <th class="min-w-200 w-300">Item</th>
                                                     <th class="min-w-100 w-200">Merk</th>
                                                     <th class="min-w-100px w-100px">QTY</th>
                                                     <th class="min-w-100px w-100px">Uom</th>
                                                     <th class="min-w-150px w-150px">Price</th>
-                                                    <th class="min-w-100px w-150px text-end">Total</th>
+                                                    <th class="min-w-100px w-150px">Total</th>
                                                     <th class="min-w-75px w-75px text-end">Action</th>
                                                 </tr>
                                             </thead>
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody>
-                                                <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
-                                                    <td class="pe-7">
-                                                        {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
-                                                        <select class="form-control form-select mb-2"
-                                                            data-control="select" data-hide-search=""
-                                                            data-placeholder="Select an option" name="name[]">
-                                                            <option>--Pilih Barang--</option>
-                                                            <option value="Barang 1">Barang 1</option>
-                                                            <option value="Barang 2">Barang 2</option>
-                                                        </select>
-                                                    </td>
-                                                    <td class="ps-0">
-                                                        <input class="form-control form-control-solid" type="text"
-                                                            min="1" name="merk[]" placeholder="Merk"
-                                                            value="" data-kt-element="merk">
-                                                    </td>
-                                                    <td class="ps-0">
-                                                        <input class="form-control form-control-solid" type="number"
-                                                            min="1" name="quantity[]" placeholder="Qty"
-                                                            value="" data-kt-element="quantity">
-                                                    </td>
-                                                    <td class="ps-0">
-                                                        <input class="form-control form-control-solid" type="text"
-                                                            min="" name="uom[]" placeholder="Uom"
-                                                            value="" data-kt-element="uom">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number"
-                                                            class="form-control form-control-solid text-end"
-                                                            id="harga" name="harga[]" placeholder="0,00"
-                                                            value="" data-kt-element="price">
-                                                    </td>
-                                                    <td class="pt-8 text-end text-nowrap">Rp
-                                                        <span data-kt-element="total">0.00</span>
-                                                    </td>
-                                                    <td class="pt-5 text-end">
-                                                        <button type="button"
-                                                            class="btn btn-sm btn-icon btn-active-color-primary"
-                                                            data-kt-element="remove-item">
-                                                            <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-                                                            <span class="svg-icon svg-icon-3">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                    height="24" viewBox="0 0 24 24" fill="none">
-                                                                    <path
-                                                                        d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
-                                                                        fill="currentColor"></path>
-                                                                    <path opacity="0.5"
-                                                                        d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
-                                                                        fill="currentColor"></path>
-                                                                    <path opacity="0.5"
-                                                                        d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z"
-                                                                        fill="currentColor"></path>
-                                                                </svg>
-                                                            </span>
-                                                            <!--end::Svg Icon-->
-                                                        </button>
-                                                    </td>
-                                                </tr>
+                                                {{-- Add item dynamicly --}}
                                             </tbody>
                                             <!--end::Table body-->
                                             <!--begin::Table foot-->
                                             <tfoot>
-                                                <tr
-                                                    class="border-top border-top-dashed align-top fs-6 fw-bolder text-gray-700">
+
+                                            </tfoot>
+                                            <!--end::Table foot-->
+                                        </table>
+                                        <!--end::Table-->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            {{-- <div class="table-responsive mb-10">
+                                                <tr class="border-top border-top-dashed align-top fs-6 fw-bolder text-gray-700">
                                                     <th class="text-primary">
-                                                        <button class="btn btn-link py-1" data-kt-element="add-item">Add
-                                                            item</button>
+
                                                     </th>
                                                     <th colspan="2" class="border-bottom border-bottom-dashed ps-0">
                                                         <div class="d-flex flex-column align-items-start">
                                                             <div class="fs-5">Subtotal</div>
                                                         </div>
                                                     </th>
-                                                    <th colspan="2"
-                                                        class="border-bottom border-bottom-dashed text-end">Rp
-                                                        <span data-kt-element="sub-total">0.00</span>
+                                                    <th colspan="2">
+
                                                     </th>
                                                 </tr>
                                                 <tr class="align-top fw-bolder text-gray-700">
                                                     <th></th>
-                                                    <th colspan="2" class="fs-4 ps-0">Total</th>
-                                                    <th colspan="2" class="text-end fs-4 text-nowrap">Rp
-                                                        <span data-kt-element="grand-total">0.00</span>
+                                                    <th colspan="2" class="fs-4 ps-0"><b>Total</b></th>
+                                                    <th colspan="2" class="text-end fs-4 text-nowrap">
+                                                        <input class="form-control form-control-solid" id="total"
+                                                        type="text" name="total" placeholder="total" value="Rp. 0.00" readonly>
                                                     </th>
                                                 </tr>
-                                            </tfoot>
-                                            <!--end::Table foot-->
-                                        </table>
+                                                </div> --}}
+                                                <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Sub Total</label>
+                                                <!--begin::Input group-->
+                                                <div class="mb-5">
+                                                    <input class="form-control form-control-solid" id="subtotal" type="text" name="subtotal" placeholder="Rp 0.00" value="" readonly>
+                                                </div>
+                                                <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Total</label>
+                                                <!--begin::Input group-->
+                                                <div class="mb-5">
+                                                    <input class="form-control form-control-solid" id="total" type="text" name="total" placeholder="Rp 0.00" value="" readonly>
+                                                </div>
+                                        </div>
                                     </div>
-                                    <!--end::Table-->
-                                    <!--begin::Item template-->
-                                    <table class="table d-none" data-kt-element="item-template">
-                                        <tbody>
-                                            <tr class="border-bottom border-bottom-dashed" data-kt-element="item">
-                                                <td class="pe-7">
-                                                    {{-- <input type="text" class="form-control form-control-solid mb-2" name="name[]" placeholder="Item name"> --}}
-                                                    <select class="form-control form-select mb-2" data-control="select"
-                                                        data-hide-search="false" data-placeholder="Select an option"
-                                                        name="name[]">
-                                                        <option>--Pilih Barang--</option>
-                                                        <option value="Barang 1">Barang 1</option>
-                                                        <option value="Barang 2">Barang 2</option>
-                                                    </select>
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" type="text"
-                                                        min="1" name="merk[]" placeholder="Merk" value=""
-                                                        data-kt-element="merk">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" type="number"
-                                                        min="1" name="quantity[]" placeholder="Qty"
-                                                        value="" data-kt-element="quantity">
-                                                </td>
-                                                <td class="ps-0">
-                                                    <input class="form-control form-control-solid" type="text"
-                                                        min="" name="uom[]" placeholder="Uom" value=""
-                                                        data-kt-element="uom">
-                                                </td>
-                                                <td>
-                                                    <input type="number" class="form-control form-control-solid text-end"
-                                                        id="harga" name="harga[]" placeholder="0,00" value=""
-                                                        data-kt-element="price">
-                                                </td>
-                                                <td class="pt-8 text-end text-nowrap">Rp
-                                                    <span data-kt-element="total">0.00</span>
-                                                </td>
-                                                <td class="pt-5 text-end">
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-icon btn-active-color-primary"
-                                                        data-kt-element="remove-item">
-                                                        <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
-                                                        <span class="svg-icon svg-icon-3">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none">
-                                                                <path
-                                                                    d="M5 9C5 8.44772 5.44772 8 6 8H18C18.5523 8 19 8.44772 19 9V18C19 19.6569 17.6569 21 16 21H8C6.34315 21 5 19.6569 5 18V9Z"
-                                                                    fill="currentColor"></path>
-                                                                <path opacity="0.5"
-                                                                    d="M5 5C5 4.44772 5.44772 4 6 4H18C18.5523 4 19 4.44772 19 5V5C19 5.55228 18.5523 6 18 6H6C5.44772 6 5 5.55228 5 5V5Z"
-                                                                    fill="currentColor"></path>
-                                                                <path opacity="0.5"
-                                                                    d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z"
-                                                                    fill="currentColor"></path>
-                                                            </svg>
-                                                        </span>
-                                                        <!--end::Svg Icon-->
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <table class="table d-none" data-kt-element="empty-template">
-                                        <tbody>
-                                            <tr data-kt-element="empty">
-                                                <th colspan="5" class="text-muted text-center py-10">No items</th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <!--end::Item template-->
+
+
                                 </div>
                                 <!--end::Wrapper-->
                             </form>
@@ -469,7 +453,160 @@
     <!--end::Post-->
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // const data = [];
+        function formatNumber(number) {
+            return number.toLocaleString('id-ID',{ maximumFractionDigits: 2});
+        }
 
+        function calculateTotal() {
+
+            var harga = parseFloat($('#harga').val().replaceAll('.','') || 0);
+            var qty = parseFloat($('#qty').val() || 0);
+
+
+
+            // Calculate subtotal
+            var total_harga = qty * harga;
+            $('#total_harga').val(formatNumber(total_harga));
+
+        }
+
+        $('#harga, #qty').on('input', function() {
+            calculateTotal();
+        });
+    });
+
+
+    function extractNumericValue(value) {
+    // Extract numeric value from a string (assuming 'Rp. xxx' format)
+        return parseFloat(value.replace('Rp ', '').replace(',', ''));
+    }
+
+    function tableToJSON(table) {
+        var data = [];
+        var headers = [];
+
+        // Get headers
+        for (var i = 0; i < table.rows[0].cells.length; i++) {
+            headers[i] = table.rows[0].cells[i].textContent.toLowerCase();
+        }
+
+        // Iterate through rows (start from index 1 to skip the header row)
+        for (var i = 1; i < table.rows.length; i++) {
+            var row = table.rows[i];
+            var rowData = {};
+
+            // Iterate through cells
+            for (var j = 0; j < row.cells.length; j++) {
+                rowData[headers[j]] = row.cells[j].textContent;
+            }
+
+            data.push(rowData);
+        }
+
+        return JSON.stringify(data);
+
+    }
+
+    function getTableData() {
+        document.getElementById("tableData").value = tableToJSON(document.getElementById('itemTable'))
+        console.log(tableToJSON(document.getElementById('itemTable')))
+    }
+
+    function addRow() {
+        // const data = [];
+        // Get values from the input fields
+        var nama = document.getElementById("nama");
+        var merk = document.getElementById("merk");
+        var qty = document.getElementById("qty");
+        var uom = document.getElementById("uom");
+        var harga = document.getElementById("harga");
+        var total_harga = document.getElementById("total_harga");
+
+        // data.push({id:id,nama:nama,merk:merk,qty:qty,uom:uom,harga:harga,total_harga});
+
+        // Create a new row in the table
+        var table = document.getElementById("itemTable");
+        var row = table.insertRow(table.rows.length);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        var cell6 = row.insertCell(6);
+        var cell7 = row.insertCell(7);
+
+        // Disable the input fields after adding an item
+        // document.getElementById("id_supplier").value = document.getElementById('id_supp').value
+        // document.getElementById("tanggal").readOnly = true;
+
+        // document.getElementById("id_supp").disabled = true;
+        // document.getElementById("jatuh_tempo").readOnly = true;
+
+        // Set the cell values
+        cell0.innerHTML = nama.options[nama.selectedIndex].value;
+        cell0.style.display = 'none'
+        cell1.innerHTML = nama.options[nama.selectedIndex].text;
+        // cell2.innerHTML =  '<span class="clickable" onclick="fetchHistoryPembelian('+barang.options[barang.selectedIndex].value+')">' + barang.options[barang.selectedIndex].text + '</span>';
+        cell2.innerHTML = merk.value;
+        cell3.innerHTML = qty.value;
+        cell4.innerHTML = uom.value;
+        cell5.innerHTML = 'Rp ' + harga.value;
+        cell6.innerHTML = 'Rp ' + total_harga.value;
+        cell7.innerHTML = '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
+
+
+
+        // Clear input fields after adding a row
+        nama.value="";
+        merk.value = "";
+        qty.value = "";
+        uom.value = "";
+        harga.value = "";
+        total_harga.value = "";
+
+        // getTableData();
+        updateTotals();
+    }
+
+    function deleteRow(btn) {
+        // Delete the row from the table
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        updateTotals();
+
+    }
+
+
+
+    function updateTotals() {
+    // Update totals
+    var table = document.getElementById("itemTable");
+    var subTotal = 0;
+    var totalHarga = 0;
+
+    for (var i = 0, row; row = table.rows[i]; i++) {
+        // Skip the header row
+        if (i === 0) {
+            continue;
+        }
+
+        var sub = parseFloat(row.cells[5].innerText.replace('Rp ', '').replaceAll('.',''));
+        var harga = parseFloat(row.cells[6].innerText.replace('Rp ', '').replaceAll('.',''));
+
+        subTotal += sub;
+        totalHarga += harga;
+    }
+
+    // Display totals
+    document.getElementById("subtotal").value = 'Rp ' + subTotal.toFixed(2);
+    document.getElementById("total").value = 'Rp ' + totalHarga.toFixed(2);
+}
+
+</script>
 <script>
     $(document).ready(function() {
         function formatNumber(number) {
