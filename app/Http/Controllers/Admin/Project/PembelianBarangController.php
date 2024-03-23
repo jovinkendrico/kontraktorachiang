@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\PembelianBarang\StorePembelianBarangRequest;
 use App\Http\Requests\Admin\Project\PembelianBarang\UpdatePembelianBarangRequest;
+use App\Models\Barang;
 use App\Models\PembelianBarang;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class PembelianBarangController extends Controller
         //
         $acc = 'here show';
         $pembelian_barang_menu = 'active';
-        return view('admin.project.pembelianbarang.create', compact('acc', 'pembelian_barang_menu'));
+        $barang = Barang::all();
+        return view('admin.project.pembelianbarang.create', compact('acc', 'barang', 'pembelian_barang_menu'));
     }
 
     /**
