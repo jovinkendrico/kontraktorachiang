@@ -88,6 +88,6 @@ class PembelianBarangController extends Controller
     {
         //
         PembelianBarang::findOrFail($id)->delete();
-        return redirect()->route('admin.project.barang.index');
+        return redirect()->route('admin.project.pembelianbarang.index');
     }
 }
