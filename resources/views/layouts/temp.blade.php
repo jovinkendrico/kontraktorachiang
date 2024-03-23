@@ -193,9 +193,13 @@
     <script src="/Template/dist/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
     <script src="/Template/dist/assets/js/custom/utilities/modals/create-app.js"></script>
     <script src="/Template/dist/assets/js/custom/utilities/modals/users-search.js"></script>
-    <script src="/Template/dist/assets/js/custom/apps/invoices/create.js"></script>
+
     <!--end::Page Custom Javascript-->
     <script>
+        $('.select2').select2();
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
         $("#kt_datatable_example_5").DataTable({
             "language": {
                 "lengthMenu": "Show _MENU_",
