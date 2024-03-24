@@ -237,6 +237,12 @@
                                     <div class="row gx-10 mb-5">
                                         <!--begin::Col-->
                                         <div class="col-lg-4">
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Project</label>
+                                            <select class="form-select mb-2 select2" id="project_id">
+                                                <option value="{{ $project->id }}">{{ $project->nama }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Supplier</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
@@ -370,16 +376,15 @@
 
 
                                     <div class="separator separator-dashed my-10"></div>
-                                        <!--begin::Action buttons-->
-                                        <div class="d-flex justify-content-end">
-                                            <!--begin::Button-->
-                                            <button class="btn btn-light me-3"><a
-                                                    href="">Cancel</a></button>
-                                            <!--end::Button-->
-                                            <!--begin::Button-->
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <!--end::Button-->
-                                        </div>
+                                    <!--begin::Action buttons-->
+                                    <div class="d-flex justify-content-end">
+                                        <!--begin::Button-->
+                                        <button class="btn btn-light me-3"><a href="">Cancel</a></button>
+                                        <!--end::Button-->
+                                        <!--begin::Button-->
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <!--end::Button-->
+                                    </div>
                                 </div>
                                 <!--end::Wrapper-->
                             </form>
