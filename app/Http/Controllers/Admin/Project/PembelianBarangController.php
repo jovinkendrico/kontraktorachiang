@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Project\PembelianBarang\StorePembelianBarangRequest;
 use App\Http\Requests\Admin\Project\PembelianBarang\UpdatePembelianBarangRequest;
 use App\Models\Barang;
 use App\Models\PembelianBarang;
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class PembelianBarangController extends Controller
@@ -19,9 +20,10 @@ class PembelianBarangController extends Controller
     {
         //
         $pembelianbarangs = PembelianBarang::where('project_id', $id)->get();
+        $project = Project::findOrFail($id);
         $acc = 'here show';
         $pembelian_barang_menu = 'active';
-        return view('admin.project.pembelianbarang.index', compact('pembelian_barang_menu', 'acc', 'pembelianbarangs'));
+        return view('admin.project.pembelianbarang.index', compact('pembelian_barang_menu', 'acc', 'pembelianbarangs', 'project'));
     }
 
     /**
