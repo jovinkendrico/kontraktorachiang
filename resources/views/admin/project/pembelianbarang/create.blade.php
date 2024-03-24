@@ -238,7 +238,7 @@
                                         <!--begin::Col-->
                                         <div class="col-lg-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Project</label>
-                                            <select class="form-select mb-2 select2" id="project_id">
+                                            <select class="form-select mb-2 select2" id="project_id" name="project_id">
                                                 <option value="{{ $project->id }}">{{ $project->nama }}</option>
                                             </select>
                                         </div>
@@ -246,8 +246,8 @@
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Supplier</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
-                                                <input type="text" class="form-control form-control-solid"
-                                                    placeholder="Name Supplier">
+                                                <input type="text" name="supplier_id" id="supplier_id"
+                                                    class="form-control form-control-solid" placeholder="Name Supplier">
                                             </div>
                                             <!--end::Input group-->
                                         </div>
