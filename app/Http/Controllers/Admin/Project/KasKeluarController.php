@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\KasKeluar\StoreKasKeluarRequest;
 use App\Http\Requests\Admin\Project\KasKeluar\UpdateKasKeluarRequest;
 use App\Models\KasKeluar;
+use App\Models\Project;
 
 class KasKeluarController extends Controller
 {
@@ -17,9 +18,10 @@ class KasKeluarController extends Controller
     {
         //
         $kaskeluars = KasKeluar::where('project_id', $id)->get();
+        $project = Project::findOrFail($id);
         $acc = 'here show';
         $kas_keluar_menu = 'active';
-        return view('admin.project.kaskeluar.index', compact('kas_keluar_menu', 'acc', 'kaskeluars'));
+        return view('admin.project.kaskeluar.index', compact('kas_keluar_menu', 'acc', 'kaskeluars', 'project'));
     }
 
     /**
