@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PembelianBarang extends Model
@@ -18,5 +19,9 @@ class PembelianBarang extends Model
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+    public function detailpembelianbarang(): HasMany
+    {
+        return $this->hasMany(DetailPembelianBarang::class);
     }
 }
