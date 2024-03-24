@@ -22,6 +22,6 @@ class DetailPembelianBarang extends Model
 
     public function barang(): BelongsTo
     {
-        return $this->belongsTo(PembelianBarang::class);
+        return $this->belongsTo(Barang::class);
     }
 }
