@@ -518,7 +518,7 @@
 
 
         // Clear input fields after adding a row
-        $("#nama").empty();
+        $("#nama").val(null).trigger("change");
         merk.value = "";
         qty.value = "";
         uom.value = "";
