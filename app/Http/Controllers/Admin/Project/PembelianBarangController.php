@@ -29,13 +29,14 @@ class PembelianBarangController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
         //
         $acc = 'here show';
         $pembelian_barang_menu = 'active';
+        $project = Project::findOrFail($id);
         $barangs = Barang::all();
-        return view('admin.project.pembelianbarang.create', compact('acc', 'barangs', 'pembelian_barang_menu'));
+        return view('admin.project.pembelianbarang.create', compact('acc', 'barangs', 'pembelian_barang_menu', 'project'));
     }
 
     /**

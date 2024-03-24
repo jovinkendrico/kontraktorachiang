@@ -52,7 +52,8 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.project.pembelianbarang.create') }}" class="btn btn-primary">Add
+                        <a href="{{ route('admin.project.pembelianbarang.create', $project->id) }}"
+                            class="btn btn-primary">Add
                             Pembelian Barang</a>
                         <!--end::Add product-->
                     </div>
