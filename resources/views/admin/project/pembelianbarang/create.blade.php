@@ -162,70 +162,44 @@
                             <!--begin::Form-->
                             <form action="" id="kt_invoice_form">
                                 <!--begin::Wrapper-->
-                                <div class="d-flex flex-column align-items-start flex-xxl-row">
+                                <div class="">
                                     <!--begin::Input group-->
-                                    <div class="d-flex align-items-center flex-equal fw-row me-4 order-2"
-                                        data-bs-toggle="tooltip" data-bs-trigger="hover" title=""
-                                        data-bs-original-title="Tanggal Pembelian">
-                                        <!--begin::Date-->
-                                        <div class="fs-6 fw-bolder text-gray-700 text-nowrap">Tanggal Beli:</div>
-                                        <!--end::Date-->
-                                        <!--begin::Input-->
-                                        <div class="position-relative d-flex align-items-center w-150px">
-                                            <!--begin::Datepicker-->
-                                            <input
-                                                class="form-control form-control-transparent fw-bolder pe-5"
-                                                placeholder="Select date" name="tanggal" type="text"
-                                                readonly="readonly">
-                                            <!--end::Datepicker-->
-                                            <!--begin::Icon-->
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-2 position-absolute ms-4 end-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                            <!--end::Icon-->
-                                        </div>
-                                        <!--end::Input-->
-                                    </div>
+
                                     <!--end::Input group-->
 
                                     <!--begin::Input group-->
-                                    <div class="d-flex align-items-center justify-content-end flex-equal order-3 fw-row"
-                                        data-bs-toggle="tooltip" data-bs-trigger="hover" title=""
-                                        data-bs-original-title="Tanggal Jatuh Tempo">
-                                        <!--begin::Date-->
-                                        <div class="fs-6 fw-bolder text-gray-700 text-nowrap">Jatuh Tempo:</div>
-                                        <!--end::Date-->
-                                        <!--begin::Input-->
-                                        <div class="position-relative d-flex align-items-center w-150px">
-                                            <!--begin::Datepicker-->
-                                            <input
-                                                class="form-control form-control-transparent fw-bolder pe-5"
-                                                placeholder="Select date" name="jatuh_tempo" type="text"
-                                                readonly="">
-                                            <!--end::Datepicker-->
-                                            <!--begin::Icon-->
-                                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                            <span class="svg-icon svg-icon-2 position-absolute end-0 ms-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path
-                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                        fill="currentColor"></path>
-                                                </svg>
-                                            </span>
-                                            <!--end::Svg Icon-->
-                                            <!--end::Icon-->
-                                        </div>
-                                        <!--end::Input-->
-                                    </div>
+
                                     <!--end::Input group-->
+
+                                    <div class="row mb-4">
+                                        <div class="col-md-4">
+                                            <label class="fs-6 fw-bold form-label">Tanggal :</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value=""
+                                                    placeholder="Select date" name="tanggal">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value=""
+                                                    placeholder="Select date" name="jatuhtempo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="row">
+                                        <div class="col-md-4">
+                                            <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
+                                            <div class="input-group date">
+                                                <input type="date" class="form-control" value=""
+                                                    placeholder="Select date" name="jatuhtempo">
+                                            </div>
+                                        </div>
+                                    </div> --}}
+
                                 </div>
                                 <!--end::Top-->
                                 <!--begin::Separator-->
