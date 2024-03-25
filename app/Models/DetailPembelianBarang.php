@@ -24,4 +24,8 @@ class DetailPembelianBarang extends Model
     {
         return $this->belongsTo(Barang::class);
     }
+    public function totalharga()
+    {
+        return $this->qty * $this->harga;
+    }
 }

@@ -24,4 +24,15 @@ class PembelianBarang extends Model
     {
         return $this->hasMany(DetailPembelianBarang::class);
     }
+
+    public function getTotalHarga()
+    {
+        $totalHarga = 0;
+
+        foreach ($this->detailpembelianbarang as $detail) {
+            $totalHarga += $detail->totalharga();
+        }
+
+        return $totalHarga;
+    }
 }
