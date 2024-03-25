@@ -81,23 +81,23 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            {{-- @foreach ($projects as $project)
+                            @foreach ($pembelianbarangs as $pembelianbarang)
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $project->nama }}
+                                        {{ $pembelianbarang->supplier }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $project->lokasi }}
+                                        {{ $pembelianbarang->status }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        Rp. {{ number_format($project->totalharga, 0, ',', '.') }}
+                                        Rp. {{ number_format($pembelianbarang->getTotalHarga(), 0, ',', '.') }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
-                                        @if (is_null($project->deleted_at))
+                                        @if (is_null($pembelianbarang->deleted_at))
                                             <div class="badge badge-light-success">Unlock</div>
                                         @else
                                             <div class="badge badge-light-danger">Lock</div>
@@ -124,29 +124,29 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <!--begin::Badges-->
-                                            @if (is_null($project->deleted_at))
+                                            @if (is_null($pembelianbarang->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.index', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.edit', $project->id) }}"
+                                                    <a href="{{ route('admin.project.project.edit', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <div class="menu-item px-3">
                                                     <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#delete{{ $project->id }}"
+                                                        data-bs-target="#delete{{ $pembelianbarang->id }}"
                                                         class="btn btn-danger btn-sm delete">
                                                         <i class="fas fa-trash"></i>Delete
                                                     </button>
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.index', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.restore', $project->id) }}"
+                                                    <a href="{{ route('admin.project.project.restore', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Restore</a>
                                                 </div>
                                             @endif
@@ -156,8 +156,8 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
-                            @endforeach --}}
+                                <x-confirm-delete :id="$pembelianbarang->id" :route="route('admin.project.pembelianbarang.delete', $pembelianbarang->id)" :model="$pembelianbarang" :modelAttribute="'nama'" />
+                            @endforeach
                         </tbody>
                         <!--end::Table body-->
                     </table>
