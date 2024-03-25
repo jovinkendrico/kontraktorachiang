@@ -174,7 +174,7 @@
                                         <div class="position-relative d-flex align-items-center w-150px">
                                             <!--begin::Datepicker-->
                                             <input
-                                                class="form-control form-control-transparent fw-bolder pe-5 flatpickr-input active"
+                                                class="form-control form-control-transparent fw-bolder pe-5"
                                                 placeholder="Select date" name="tanggal" type="text"
                                                 readonly="readonly">
                                             <!--end::Datepicker-->
@@ -206,7 +206,7 @@
                                         <div class="position-relative d-flex align-items-center w-150px">
                                             <!--begin::Datepicker-->
                                             <input
-                                                class="form-control form-control-transparent fw-bolder pe-5 flatpickr-input"
+                                                class="form-control form-control-transparent fw-bolder pe-5"
                                                 placeholder="Select date" name="jatuh_tempo" type="text"
                                                 readonly="">
                                             <!--end::Datepicker-->
