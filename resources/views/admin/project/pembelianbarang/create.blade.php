@@ -160,7 +160,9 @@
                         <!--begin::Card body-->
                         <div class="card-body p-12">
                             <!--begin::Form-->
-                            <form action="" id="kt_invoice_form">
+                            <form action="{{ route('admin.project.pembelianbarang.store') }}" method="POST"
+                                id="form">
+                                @csrf
                                 <!--begin::Wrapper-->
                                 <div class="">
                                     <!--begin::Input group-->
@@ -176,7 +178,7 @@
                                             <label class="fs-6 fw-bold form-label">Tanggal :</label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value=""
-                                                    placeholder="Select date" name="tanggal">
+                                                    placeholder="Select date" id="tanggal" name="tanggal">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -186,7 +188,7 @@
                                             <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value=""
-                                                    placeholder="Select date" name="jatuhtempo">
+                                                    placeholder="Select date" id="jatuhtempo" name="jatuhtempo">
                                             </div>
                                         </div>
                                     </div>
@@ -297,7 +299,7 @@
                                     <!--begin::Table wrapper-->
                                     <div class="table-responsive mb-10">
                                         <!--begin::Table-->
-
+                                        <input type="hidden" name="tableData">
                                         <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="itemTable">
                                             <!--begin::Table head-->
                                             <thead>
@@ -383,6 +385,50 @@
 <script>
     $(document).ready(function() {
         // const data = [];
+        function formatTableToJson() {
+            var jsonData = {
+                "Item": []
+            };
+
+            // Get the table body
+            var tbody = document.querySelector("#itemTable tbody");
+            if (!tbody) return jsonData;
+
+            // Get all rows in the table body
+            var rows = tbody.querySelectorAll("tr");
+
+            // Iterate over each row
+            rows.forEach(function(row) {
+                var rowData = {};
+                var columns = row.querySelectorAll("td");
+
+                // Iterate over each column in the row
+                columns.forEach(function(column, index) {
+                    // Get the corresponding header text for the column
+                    var headerText = document.querySelector("#itemTable thead th:nth-child(" + (
+                        index + 1) + ")").textContent.trim();
+                    // Add column value to rowData with headerText as key
+                    rowData[headerText] = column.textContent.trim();
+                });
+
+                // Push rowData to jsonData
+                jsonData["Item"].push(rowData);
+            });
+
+            return jsonData;
+            console.log(jsonData)
+        }
+
+
+        function getTableData() {
+            document.getElementById("tableData").value = formatTableToJson()
+        }
+
+        function maskingNumber() {
+            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
+            $('#harga').val(formatNumber(totalharga));
+        }
+
         function formatNumber(number) {
             return number.toLocaleString('id-ID', {
                 maximumFractionDigits: 2
@@ -405,6 +451,13 @@
         $('#harga, #qty').on('input', function() {
             calculateTotal();
         });
+        $('#harga').on('input', function() {
+            maskingNumber();
+        });
+        $('#form').on('submit', function() {
+            const data = getTableData();
+            console.log(data);
+        });
     });
 
 
@@ -413,36 +466,8 @@
         return parseFloat(value.replace('Rp ', '').replace(',', ''));
     }
 
-    function tableToJSON(table) {
-        var data = [];
-        var headers = [];
 
-        // Get headers
-        for (var i = 0; i < table.rows[0].cells.length; i++) {
-            headers[i] = table.rows[0].cells[i].textContent.toLowerCase();
-        }
 
-        // Iterate through rows (start from index 1 to skip the header row)
-        for (var i = 1; i < table.rows.length; i++) {
-            var row = table.rows[i];
-            var rowData = {};
-
-            // Iterate through cells
-            for (var j = 0; j < row.cells.length; j++) {
-                rowData[headers[j]] = row.cells[j].textContent;
-            }
-
-            data.push(rowData);
-        }
-
-        return JSON.stringify(data);
-
-    }
-
-    function getTableData() {
-        document.getElementById("tableData").value = tableToJSON(document.getElementById('itemTable'))
-        console.log(tableToJSON(document.getElementById('itemTable')))
-    }
 
 
     function addRow() {
@@ -540,26 +565,4 @@
         document.getElementById("subtotal").value = 'Rp ' + formatNumber(subTotal);
         document.getElementById("total").value = 'Rp ' + formatNumber(totalHarga);
     }
-</script>
-<script>
-    $(document).ready(function() {
-        function formatNumber(number) {
-            return number.toLocaleString('id-ID', {
-                maximumFractionDigits: 0
-            });
-        }
-
-        function maskingNumber() {
-            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
-            $('#harga').val(formatNumber(totalharga));
-        }
-
-        $('#harga').on('input', function() {
-            maskingNumber();
-        });
-        $('#form').on('submit', function() {
-            var totalharga = $('#harga').val().replaceAll('.', '');
-            $('#harga').val(totalharga)
-        });
-    });
 </script>
