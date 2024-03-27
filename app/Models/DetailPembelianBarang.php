@@ -17,7 +17,7 @@ class DetailPembelianBarang extends Model
 
     public function pembelianbarang(): BelongsTo
     {
-        return $this->belongsTo(PembelianBarang::class);
+        return $this->belongsTo(PembelianBarang::class, 'pembelian_barang_id', 'id');
     }
 
     public function barang(): BelongsTo
