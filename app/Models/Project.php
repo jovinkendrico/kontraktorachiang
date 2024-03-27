@@ -25,5 +25,16 @@ class Project extends Model
     {
         return $this->hasMany(KasKeluar::class);
     }
+
+    public function getTotalPembelian()
+    {
+        $total = 0;
+
+        foreach ($this->pembelianbarang as $detail) {
+            $total += $detail->getTotalHarga();
+        }
+
+        return $total;
+    }
 }
 
