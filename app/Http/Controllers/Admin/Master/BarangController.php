@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Master\Barang\StoreBarangRequest;
 use App\Http\Requests\Admin\Master\Barang\UpdateBarangRequest;
 use App\Models\Barang;
+use App\Models\DetailPembelianBarang;
 
 
 class BarangController extends Controller
@@ -20,7 +21,7 @@ class BarangController extends Controller
         // return view('admin.master.barang.index', compact('barangs'));
         $master_acc = 'here show';
         $barang_menu = 'active';
-        return view('admin.master.barang.index',compact('barang_menu','master_acc','barangs'));
+        return view('admin.master.barang.index', compact('barang_menu', 'master_acc', 'barangs'));
     }
 
     /**
@@ -31,7 +32,7 @@ class BarangController extends Controller
         //
         $master_acc = 'here show';
         $barang_menu = 'active';
-        return view('admin.master.barang.create',compact('master_acc','barang_menu'));
+        return view('admin.master.barang.create', compact('master_acc', 'barang_menu'));
     }
 
     /**
@@ -52,8 +53,9 @@ class BarangController extends Controller
         //
         $master_acc = 'here show';
         $barang_menu = 'active';
+        $detailpembelianbarangs = DetailPembelianBarang::where('barang_id', $id)->get();
         $barang = Barang::findOrFail($id);
-        return view('admin.master.barang.show', compact('master_acc','barang_menu','barang'));
+        return view('admin.master.barang.show', compact('master_acc', 'barang_menu', 'detailpembelianbarangs', 'barang'));
     }
 
     /**
@@ -65,7 +67,7 @@ class BarangController extends Controller
         $master_acc = 'here show';
         $barang_menu = 'active';
         $barang = Barang::findOrFail($id);
-        return view('admin.master.barang.edit', compact('master_acc','barang_menu','barang'));
+        return view('admin.master.barang.edit', compact('master_acc', 'barang_menu', 'barang'));
     }
 
     /**
