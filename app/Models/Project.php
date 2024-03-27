@@ -26,6 +26,11 @@ class Project extends Model
         return $this->hasMany(KasKeluar::class);
     }
 
+    public function payment(): HasMany
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function getTotalPembelian()
     {
         $total = 0;
