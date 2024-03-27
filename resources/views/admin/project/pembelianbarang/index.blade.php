@@ -126,7 +126,7 @@
                                             <!--begin::Badges-->
                                             @if (is_null($pembelianbarang->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $pembelianbarang->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.show', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
@@ -142,7 +142,7 @@
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $pembelianbarang->id) }}"
+                                                    <a href="{{ route('admin.project.pembelianbarang.show', $pembelianbarang->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
