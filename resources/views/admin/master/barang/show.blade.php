@@ -104,6 +104,7 @@
                                 <th class="min-w-125px">Nama Barang</th>
                                 <th class="min-w-125px">Supplier</th>
                                 <th class="min-w-125px">Project</th>
+                                <th class="min-w-125px">Merk</th>
                                 <th class="min-w-125px">UOM</th>
                                 <th class="min-w-125px">Harga</th>
 
@@ -127,6 +128,9 @@
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         {{ $detail->pembelianbarang->project->nama }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ $detail->merk }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         {{ $detail->uom }}
