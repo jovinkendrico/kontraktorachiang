@@ -163,7 +163,7 @@
                             <form action="{{ route('admin.project.pembelianbarang.store') }}" method="POST"
                                 id="form">
                                 @csrf
-                                <input type="text" name="tableData" id="tableData"
+                                <input type="hidden" name="tableData" id="tableData"
                                     value="{{ old('tableData') ?? '' }}">
                                 <!--begin::Wrapper-->
                                 <div class="">
