@@ -163,6 +163,8 @@
                             <form action="{{ route('admin.project.pembelianbarang.store') }}" method="POST"
                                 id="form">
                                 @csrf
+                                <input type="text" name="tableData" id="tableData"
+                                    value="{{ old('tableData') ?? '' }}">
                                 <!--begin::Wrapper-->
                                 <div class="">
                                     <!--begin::Input group-->
@@ -180,6 +182,8 @@
                                                 <input type="date" class="form-control" value=""
                                                     placeholder="Select date" id="tanggal" name="tanggal">
                                             </div>
+                                            <x-forms.input-error name="tanggal" />
+
                                         </div>
                                         <div class="col-md-4">
 
@@ -188,8 +192,11 @@
                                             <label class="fs-6 fw-bold form-label">Jatuh Tempo :</label>
                                             <div class="input-group date">
                                                 <input type="date" class="form-control" value=""
-                                                    placeholder="Select date" id="jatuhtempo" name="jatuhtempo">
+                                                    placeholder="Select date" id="jatuh_tempo" name="jatuh_tempo">
+
                                             </div>
+                                            <x-forms.input-error name="jatuh_tempo" />
+
                                         </div>
                                     </div>
                                     {{-- <div class="row">
@@ -212,18 +219,37 @@
                                     <!--begin::Row-->
                                     <div class="row gx-10 mb-5">
                                         <!--begin::Col-->
-                                        <div class="col-lg-4">
+                                        <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Project</label>
                                             <select class="form-select mb-2 select2" id="project_id" name="project_id">
                                                 <option value="{{ $project->id }}">{{ $project->nama }}</option>
                                             </select>
+                                            <x-forms.input-error name="project_id" />
                                         </div>
-                                        <div class="col-lg-4">
+                                        <div class="col-md-4">
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Supplier</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
-                                                <input type="text" name="supplier_id" id="supplier_id"
+                                                <input type="text" name="supplier" id="supplier"
                                                     class="form-control form-control-solid" placeholder="Name Supplier">
+                                                <x-forms.input-error name="supplier" />
+                                            </div>
+                                            <!--end::Input group-->
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Status
+                                                Bayar</label>
+                                            <!--begin::Input group-->
+                                            <div class="mb-5">
+                                                <select class="form-select mb-2" data-control="select2" id="status"
+                                                    name="status" data-placeholder="Pilih Status" tabindex="-1">
+                                                    <option disabled selected value>-- Pilih Status Bayar--</option>
+                                                    <option value="Y" {{ old('status') == 'Y' ? 'selected' : '' }}>
+                                                        Bayar</option>
+                                                    <option value="N" {{ old('status') == 'N' ? 'selected' : '' }}>
+                                                        Belum Bayar</option>
+                                                </select>
+                                                <x-forms.input-error name="status" />
                                             </div>
                                             <!--end::Input group-->
                                         </div>
@@ -299,7 +325,6 @@
                                     <!--begin::Table wrapper-->
                                     <div class="table-responsive mb-10">
                                         <!--begin::Table-->
-                                        <input type="hidden" name="tableData">
                                         <table class="table g-5 gs-0 mb-0 fw-bolder text-gray-700" id="itemTable">
                                             <!--begin::Table head-->
                                             <thead>
@@ -309,7 +334,7 @@
                                                     <th class="min-w-100 w-200">Merk</th>
                                                     <th class="min-w-100px w-100px">QTY</th>
                                                     <th class="min-w-100px w-100px">Uom</th>
-                                                    <th class="min-w-150px w-150px">Price</th>
+                                                    <th class="min-w-150px w-150px">Harga</th>
                                                     <th class="min-w-100px w-150px">Total</th>
                                                     <th class="min-w-75px w-75px text-end">Action</th>
                                                 </tr>
@@ -318,6 +343,7 @@
                                             <!--begin::Table body-->
                                             <tbody>
                                                 {{-- Add item dynamicly --}}
+
                                             </tbody>
                                             <!--end::Table body-->
                                             <!--begin::Table foot-->
@@ -385,44 +411,6 @@
 <script>
     $(document).ready(function() {
         // const data = [];
-        function formatTableToJson() {
-            var jsonData = {
-                "Item": []
-            };
-
-            // Get the table body
-            var tbody = document.querySelector("#itemTable tbody");
-            if (!tbody) return jsonData;
-
-            // Get all rows in the table body
-            var rows = tbody.querySelectorAll("tr");
-
-            // Iterate over each row
-            rows.forEach(function(row) {
-                var rowData = {};
-                var columns = row.querySelectorAll("td");
-
-                // Iterate over each column in the row
-                columns.forEach(function(column, index) {
-                    // Get the corresponding header text for the column
-                    var headerText = document.querySelector("#itemTable thead th:nth-child(" + (
-                        index + 1) + ")").textContent.trim();
-                    // Add column value to rowData with headerText as key
-                    rowData[headerText] = column.textContent.trim();
-                });
-
-                // Push rowData to jsonData
-                jsonData["Item"].push(rowData);
-            });
-
-            return jsonData;
-            console.log(jsonData)
-        }
-
-
-        function getTableData() {
-            document.getElementById("tableData").value = formatTableToJson()
-        }
 
         function maskingNumber() {
             var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
@@ -467,7 +455,96 @@
     }
 
 
+    // function getTableData() {
+    //     // document.getElementById("tableData").value = tableToJSON();
+    //     // console.log(tableToJSON(document.getElementById('itemTable')))
+    //     document.getElementById("tableData").value = formatTableToJson(document.getElementById('itemTable'))
+    //     console.log(formatTableToJson(document.getElementById('itemTable')))
+    // }
 
+
+    function pushItemToArray() {
+        var table = document.getElementById("itemTable");
+        var dataArray = [];
+
+        // Iterate over rows in the table
+        for (var i = 1; i < table.rows.length; i++) {
+            var row = table.rows[i];
+            var rowData = {};
+
+            // Iterate over cells in the row
+            for (var j = 0; j < row.cells.length - 1; j++) { // Exclude the last cell containing the delete button
+                var cell = row.cells[j];
+                var cellText = cell.textContent.trim(); // Get the trimmed text content of the cell
+                var columnHeader = table.rows[0].cells[j].textContent.trim(); // Get the corresponding header text
+
+                // If the cell is in column 5 or 6, trim any word and periods
+                if (j === 5 || j === 6) {
+                    cellText = cellText.replace(/Rp|\./g, "");
+                }
+
+                // Add the cell value to the rowData object with the header as key
+                rowData[columnHeader] = cellText;
+            }
+
+            // Push rowData object to the dataArray
+            dataArray.push(rowData);
+
+        }
+        console.log(dataArray);
+        return dataArray;
+    }
+
+    function refetch() {
+        // Data JSON dari variabel atau sumber data lainnya
+        var jsonString = document.getElementById("tableData").value;
+
+        // Parse the JSON string into a JSON object
+        var jsonData = JSON.parse(jsonString);
+        console.log(jsonData)
+
+        // Ambil tabel HTML
+        var table = document.getElementById("itemTable");
+
+        for (var index = 0; index < jsonData.length; index++) {
+            (function(index) {
+                var item = jsonData[index];
+                // Buat baris baru dalam tabel
+                var row = table.insertRow();
+
+                // Masukkan nilai-nilai ke dalam sel-sel baris tersebut
+                var cell0 = row.insertCell(0);
+                var cell1 = row.insertCell(1);
+                var cell2 = row.insertCell(2);
+                var cell3 = row.insertCell(3);
+                var cell4 = row.insertCell(4);
+                var cell5 = row.insertCell(5);
+                var cell6 = row.insertCell(6);
+                var cell7 = row.insertCell(7);
+
+                cell0.textContent = item.id;
+                cell0.style.display = 'none';
+                cell1.textContent = item.Item;
+                cell2.textContent = item.Merk;
+                cell3.textContent = item.QTY;
+                cell4.textContent = item.Uom;
+                var hargaFormatted = parseFloat(item.Harga).toLocaleString('id-ID');
+                var totalFormatted = parseFloat(item.Total).toLocaleString('id-ID');
+                cell5.textContent = 'Rp. ' + hargaFormatted;
+                cell6.textContent = 'Rp. ' + totalFormatted;
+                cell7.innerHTML =
+                    '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteOldRow(this)">Delete</button>';
+                cell7.setAttribute("data-index", index); // Set custom attribute to store the index
+            })(index);
+        }
+        // console.log(document.getElementById("tableData").value)
+    }
+
+
+    window.onload = function() {
+        refetch();
+        updateTotals();
+    };
 
 
     function addRow() {
@@ -480,7 +557,6 @@
         var harga = document.getElementById("harga");
         var total_harga = document.getElementById("total_harga");
 
-        // data.push({id:id,nama:nama,merk:merk,qty:qty,uom:uom,harga:harga,total_harga});
 
         // Create a new row in the table
         var table = document.getElementById("itemTable");
@@ -500,6 +576,7 @@
 
         // document.getElementById("id_supp").disabled = true;
         // document.getElementById("jatuh_tempo").readOnly = true;
+        // Get existing table data (if any)
 
         // Set the cell values
         cell0.innerHTML = nama.options[nama.selectedIndex].value;
@@ -509,12 +586,10 @@
         cell2.innerHTML = merk.value;
         cell3.innerHTML = qty.value;
         cell4.innerHTML = uom.value;
-        cell5.innerHTML = 'Rp ' + harga.value;
-        cell6.innerHTML = 'Rp ' + total_harga.value;
+        cell5.innerHTML = 'Rp. ' + harga.value;
+        cell6.innerHTML = 'Rp. ' + total_harga.value;
         cell7.innerHTML =
             '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
-
-
 
         // Clear input fields after adding a row
         $("#nama").val(null).trigger("change");
@@ -524,14 +599,44 @@
         harga.value = "";
         total_harga.value = "";
 
-        // getTableData();
+        // Call pushItemToArray to get the table data as an array of objects
+
+        var tableDataArray = pushItemToArray();
+
+        // Convert the array of objects to a JSON string
+        var jsonDataString = JSON.stringify(tableDataArray);
+
+        // Set the JSON string as the value of the hidden input field
+        document.getElementById("tableData").value = jsonDataString;
+
         updateTotals();
+    }
+
+
+    function deleteOldRow(btn) {
+
+        var dataIndex = btn.parentNode.getAttribute("data-index"); // Get the custom data-index attribute value
+        var tableData = JSON.parse(document.getElementById("tableData").value);
+
+        // Delete the row from the table
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+
+        // Remove the corresponding item from the jsonData array
+        tableData.splice(dataIndex, 1);
+
+        // Update the value of tableData input with the modified jsonData array
+        document.getElementById("tableData").value = JSON.stringify(tableData);
+
+        updateTotals(); // Call the function to update totals if needed
     }
 
     function deleteRow(btn) {
         // Delete the row from the table
         var row = btn.parentNode.parentNode;
+
         row.parentNode.removeChild(row);
+
         updateTotals();
 
     }
@@ -549,13 +654,14 @@
         var totalHarga = 0;
 
         for (var i = 0, row; row = table.rows[i]; i++) {
+            // console.log(row.cells[5].innerText.substring(3).replaceAll('.', ''));
             // Skip the header row
             if (i === 0) {
                 continue;
             }
 
-            var sub = parseFloat(row.cells[5].innerText.replace('Rp ', '').replaceAll('.', ''));
-            var harga = parseFloat(row.cells[6].innerText.replace('Rp ', '').replaceAll('.', ''));
+            var sub = parseFloat(row.cells[5].innerText.substring(3).replaceAll('.', ''));
+            var harga = parseFloat(row.cells[6].innerText.substring(3).replaceAll('.', ''));
 
             subTotal += sub;
             totalHarga += harga;

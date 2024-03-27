@@ -23,11 +23,13 @@ class StorePembelianBarangRequest extends FormRequest
     {
         return [
             //
+            'tableData' => 'required',
+            'tableData.*'  => 'required|string|min:5',
             'tanggal' => 'required',
             'project_id' => 'required',
             'supplier' => 'required',
-            'status' => 'required',
             'jatuh_tempo' => 'required',
+            'status' => 'required',
         ];
     }
 }
