@@ -51,5 +51,10 @@ class Project extends Model
         }
         return $total;
     }
+
+    public function getProfit()
+    {
+        return $this->totalharga - $this->getTotalPembelian() - $this->getTotalJasa();
+    }
 }
 
