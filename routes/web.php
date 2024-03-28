@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Master\BarangController;
 use App\Http\Controllers\Admin\Project\KasKeluarController;
 use App\Http\Controllers\Admin\Project\PembelianBarangController;
 use App\Http\Controllers\Admin\Project\ProjectController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -61,4 +62,13 @@ Route::controller(KasKeluarController::class)->middleware('auth')->prefix('admin
     Route::delete('/delete/{id}', 'destroy')->name('delete');
 });
 
+Route::controller(PaymentController::class)->middleware('auth')->prefix('admin/project/payment')->name('admin.project.payment.')->group(function () {
+    Route::get('/index/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+});
 require __DIR__ . '/auth.php';
