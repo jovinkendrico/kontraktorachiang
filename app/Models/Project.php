@@ -41,5 +41,15 @@ class Project extends Model
 
         return $total;
     }
+
+    public function getTotalJasa()
+    {
+        $total = 0;
+
+        foreach ($this->kaskeluar as $detail) {
+            $total += $detail->getTotalJasa();
+        }
+        return $total;
+    }
 }
 

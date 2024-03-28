@@ -24,4 +24,9 @@ class KasKeluar extends Model
     {
         return $this->hasMany(DetailCashKeluar::class);
     }
+
+    public function totalharga()
+    {
+        return $this->detailcashkeluar()->sum('harga');
+    }
 }
