@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Project\KasKeluar\StoreKasKeluarRequest;
 use App\Http\Requests\Admin\Project\KasKeluar\UpdateKasKeluarRequest;
+use App\Models\DetailCashKeluar;
 use App\Models\KasKeluar;
 use App\Models\Project;
 
@@ -27,12 +28,13 @@ class KasKeluarController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
         //
         $acc = 'here show';
         $kas_keluar_menu = 'active';
-        return view('admin.project.kaskeluar.create', compact('acc', 'kas_keluar_menu'));
+        $project = Project::findorFail($id);
+        return view('admin.project.kaskeluar.create', compact('acc', 'kas_keluar_menu','project'));
     }
 
     /**
@@ -41,8 +43,25 @@ class KasKeluarController extends Controller
     public function store(StoreKasKeluarRequest $request)
     {
         $kaskeluar = $request->validated();
-        KasKeluar::insert($kaskeluar);
-        return redirect()->route('admin.project.kaskeluar.index');
+        $index = $kaskeluar['project_id'];
+        // $pembelian = PembelianBarang::insert($pembelianbarang);
+        $kaskeluarHeader = KasKeluar::create([
+            'tanggal'=> $kaskeluar['tanggal'],
+            'project_id'=> $kaskeluar['project_id'],
+            'deskripsi'=> $kaskeluar['deskripsi'],
+        ]);
+
+        $kaskeluarId = $kaskeluarHeader->id;
+
+        $tableData = json_decode($kaskeluar['tableData']);
+        foreach($tableData as $table){
+            DetailCashKeluar::create([
+                'kas_keluar_id' => $kaskeluarId,
+                'deskripsi' => $table->Deskripsi,
+                'harga' => $table->Harga,
+            ]);
+        }
+        return redirect()->route('admin.project.kaskeluar.index',$index);
     }
 
     /**

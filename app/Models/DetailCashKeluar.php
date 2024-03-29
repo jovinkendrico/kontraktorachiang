@@ -19,4 +19,9 @@ class DetailCashKeluar extends Model
     {
         return $this->belongsTo(KasKeluar::class);
     }
+
+    public function totalharga()
+    {
+        return $this->harga;
+    }
 }

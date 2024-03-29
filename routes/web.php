@@ -53,7 +53,7 @@ Route::controller(PembelianBarangController::class)->middleware('auth')->prefix(
 
 Route::controller(KasKeluarController::class)->middleware('auth')->prefix('admin/project/kaskeluar')->name('admin.project.kaskeluar.')->group(function () {
     Route::get('/index/{id}', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create/{id}', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
     Route::get('/show/{id}', 'show')->name('show');
     Route::get('/edit/{id}', 'edit')->name('edit');

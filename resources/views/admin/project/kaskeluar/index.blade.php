@@ -52,7 +52,7 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.project.kaskeluar.create') }}" class="btn btn-primary">Add
+                        <a href="{{ route('admin.project.kaskeluar.create', $project->id) }}" class="btn btn-primary">Add
                             Kas Keluar</a>
                         <!--end::Add product-->
                     </div>
@@ -79,23 +79,20 @@
                         <!--begin::Table body-->
                         <tbody class="fw-bold text-gray-600">
                             <!--begin::Table row-->
-                            {{-- @foreach ($projects as $project)
+                            @foreach ($kaskeluars as $kaskeluar)
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $project->nama }}
+                                        {{ $kaskeluar->deskripsi }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
-                                        {{ $project->lokasi }}
-                                    </td>
-                                    <td class="text-gray-800 text-hover-primary mb-1">
-                                        Rp. {{ number_format($project->totalharga, 0, ',', '.') }}
+                                        Rp. {{ number_format($kaskeluar->getTotalHarga(), 0, ',', '.') }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->
-                                        @if (is_null($project->deleted_at))
+                                        @if (is_null($kaskeluar->deleted_at))
                                             <div class="badge badge-light-success">Unlock</div>
                                         @else
                                             <div class="badge badge-light-danger">Lock</div>
@@ -122,29 +119,29 @@
                                             data-kt-menu="true">
                                             <!--begin::Menu item-->
                                             <!--begin::Badges-->
-                                            @if (is_null($project->deleted_at))
+                                            @if (is_null($kaskeluar->deleted_at))
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.kaskeluar.show', $kaskeluar->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.edit', $project->id) }}"
+                                                    <a href="{{ route('admin.project.kaskeluar.edit', $kaskeluar->id) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
                                                 <div class="menu-item px-3">
                                                     <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#delete{{ $project->id }}"
+                                                        data-bs-target="#delete{{ $kaskeluar->id }}"
                                                         class="btn btn-danger btn-sm delete">
                                                         <i class="fas fa-trash"></i>Delete
                                                     </button>
                                                 </div>
                                             @else
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    <a href="{{ route('admin.project.kaskeluar.index', $kaskeluar->id) }}"
                                                         class="menu-link px-3">Show</a>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.restore', $project->id) }}"
+                                                    <a href="{{ route('admin.project.kaskeluar.restore', $kaskeluar->id) }}"
                                                         class="menu-link px-3">Restore</a>
                                                 </div>
                                             @endif
@@ -154,8 +151,8 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
-                            @endforeach --}}
+                                <x-confirm-delete :id="$kaskeluar->id" :route="route('admin.project.kaskeluar.delete', $kaskeluar->id)" :model="$kaskeluar" :modelAttribute="'deskripsi'" />
+                            @endforeach
                         </tbody>
                         <!--end::Table body-->
                     </table>

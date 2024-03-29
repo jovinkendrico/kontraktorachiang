@@ -25,6 +25,16 @@ class KasKeluar extends Model
         return $this->hasMany(DetailCashKeluar::class);
     }
 
+    public function getTotalHarga()
+    {
+        $totalHarga = 0;
+
+        foreach ($this->detailcashkeluar as $detail) {
+            $totalHarga += $detail->totalharga();
+        }
+
+        return $totalHarga;
+
     public function totalharga()
     {
         return $this->detailcashkeluar()->sum('harga');
