@@ -70,7 +70,7 @@
                                 <th class="min-w-125px">Nama Project</th>
                                 <th class="min-w-125px">Lokasi</th>
                                 <th class="min-w-125px">Total Harga</th>
-                                <th class="min-w-125px">Total Pembelian Barang</th>
+                                <th class="min-w-200px">Total Pembelian Barang</th>
                                 <th class="min-w-125px">Total Jasa</th>
                                 <th class="min-w-125px">Profit</th>
                                 <th class="min-w-125px">Status</th>

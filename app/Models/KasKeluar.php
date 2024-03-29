@@ -22,7 +22,7 @@ class KasKeluar extends Model
 
     public function detailcashkeluar(): HasMany
     {
-        return $this->hasMany(DetailCashKeluar::class);
+        return $this->hasMany(DetailCashKeluar::class, 'kas_keluar_id', 'id');
     }
 
     public function getTotalHarga()
@@ -34,8 +34,9 @@ class KasKeluar extends Model
         }
 
         return $totalHarga;
+    }
 
-    public function totalharga()
+    public function getTotalJasa()
     {
         return $this->detailcashkeluar()->sum('harga');
     }
