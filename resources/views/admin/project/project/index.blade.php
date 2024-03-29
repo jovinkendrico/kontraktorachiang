@@ -70,6 +70,9 @@
                                 <th class="min-w-125px">Nama Project</th>
                                 <th class="min-w-125px">Lokasi</th>
                                 <th class="min-w-125px">Total Harga</th>
+                                <th class="min-w-125px">Total Pembelian Barang</th>
+                                <th class="min-w-125px">Total Jasa</th>
+                                <th class="min-w-125px">Profit</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
                             </tr>
@@ -92,6 +95,15 @@
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         Rp. {{ number_format($project->totalharga, 0, ',', '.') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        Rp. {{ number_format($project->getTotalPembelian(), 0, ',', '.') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        Rp. {{ number_format($project->getTotalJasa(), 0, ',', '.') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        Rp. {{ number_format($project->getProfit(), 0, ',', '.') }}
                                     </td>
                                     <td>
                                         <!--begin::Badges-->

@@ -34,5 +34,9 @@ class KasKeluar extends Model
         }
 
         return $totalHarga;
+
+    public function totalharga()
+    {
+        return $this->detailcashkeluar()->sum('harga');
     }
 }
