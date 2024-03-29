@@ -11,7 +11,7 @@ class StoreKasKeluarRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,8 @@ class StoreKasKeluarRequest extends FormRequest
     {
         return [
             //
+            'tableData' => 'required',
+            'tableData.*'  => 'required|string|min:2',
             'tanggal' => 'required',
             'project_id' => 'required',
             'deskripsi' => 'required',

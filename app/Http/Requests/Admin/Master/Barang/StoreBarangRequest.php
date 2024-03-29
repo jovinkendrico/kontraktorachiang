@@ -24,7 +24,6 @@ class StoreBarangRequest extends FormRequest
     {
         return [
             'nama' => 'required|unique:barangs,nama|max:255',
-            
         ];
     }
 }

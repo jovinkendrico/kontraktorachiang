@@ -44,41 +44,45 @@
                         <!--begin::Card body-->
                         <div class="card-body p-12">
                             <!--begin::Form-->
-                            <form action="" id="kt_invoice_form">
+                            <form action="{{ route('admin.project.kaskeluar.store') }}" method="POST" id="form">
+                                @csrf
+                                <input type="hidden" name="tableData" id="tableData" value="{{ old('tableData') ?? '' }}">
                                 <!--begin::Wrapper-->
-                                {{-- <div class="d-flex flex-column align-items-start flex-xxl-row">
+                                <div class="d-flex flex-column align-items-start flex-xxl-row">
                                     <!--begin::Input group-->
                                     <div class="d-flex align-items-center flex-equal fw-row me-4 order-2"
-                                        data-bs-toggle="tooltip" data-bs-trigger="hover" title=""
-                                        data-bs-original-title="Tanggal Pembelian">
+                                        data-bs-toggle="tooltip" data-bs-trigger="" title="">
                                         <!--begin::Date-->
+                                        <div class="fs-6 fw-bolder text-gray-700 text-nowrap">Tanggal Kas Keluar :</div>
                                         <!--end::Date-->
                                         <!--begin::Input-->
                                         <div class="position-relative d-flex align-items-center w-150px">
                                             <!--begin::Datepicker-->
-                                            <div class="input-group date">
-                                                <input type="date" class="form-control" value="" placeholder="Select date" name="tanggal">
-                                            </div>
+                                            <input class="form-control form-control-transparent fw-bolder pe-5"
+                                                placeholder="Select date" name="tanggal" />
+
                                             <!--end::Datepicker-->
                                             <!--begin::Icon-->
                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-
+                                            <span class="svg-icon svg-icon-2 position-absolute ms-4 end-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                                        fill="currentColor" />
+                                                </svg>
+                                            </span>
                                             <!--end::Svg Icon-->
                                             <!--end::Icon-->
                                         </div>
+
                                         <!--end::Input-->
+                                        <x-forms.input-error name="tanggal" />
                                     </div>
+
                                     <!--end::Input group-->
-                                </div> --}}
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="fs-6 fw-bold form-label mt-3">Tanggal Kas Keluar :</label>
-                                        <div class="input-group date">
-                                            <input type="date" class="form-control" value=""
-                                                placeholder="Select date" name="tanggal">
-                                        </div>
-                                    </div>
                                 </div>
+
                                 <!--end::Top-->
                                 <!--begin::Separator-->
                                 <div class="separator separator-dashed my-10"></div>
@@ -92,15 +96,18 @@
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Project</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
-                                                <input type="text" class="form-control form-control-solid"
-                                                    placeholder="Isi Dari Database Nama nya" value="">
+                                                <select class="form-select mb-2 select2" id="project_id" name="project_id">
+                                                    <option value="{{ $project->id }}">{{ $project->nama }}</option>
+                                                </select>
                                             </div>
+                                            <x-forms.input-error name="project_id" />
 
                                             <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Deskripsi</label>
                                             <!--begin::Input group-->
                                             <div class="mb-5">
-                                                <textarea name="deskripsi" class="form-control form-control-solid" rows="3" placeholder="Deskripsi"></textarea>
+                                                <textarea name="deskripsi" class="form-control form-control-solid" rows="3" placeholder="Deskripsi">{{old('deskripsi') ?? '' }}</textarea>
                                             </div>
+                                            <x-forms.input-error name="deskripsi" />
                                         </div>
                                         <!--end::Col-->
 
@@ -115,28 +122,24 @@
                                             <!--begin::Table head-->
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
-                                                    <th class="min-w-10 w-20">Deskripsi</th>
-                                                    <th class="min-w-100 w-200">Harga</th>
+                                                    <th class="min-w-10 w-10">Deskripsi</th>
+                                                    <th class="min-w-50 w-50">Harga</th>
                                                     <th class="min-w-75px w-75px ">Action</th>
                                                 </tr>
                                             </thead>
                                             <!--end::Table head-->
                                             <!--begin::Table body-->
                                             <tbody>
-                                                <input class="form-control form-control-solid" id="project_id"
-                                                    type="text" name="project_id" placeholder="project_id"
-                                                    value="" hidden>
 
                                                 <td class="pe-7">
                                                     <input class="form-control form-control-solid" id="deskripsi"
-                                                        type="text" name="deskripsi" placeholder="Deskripsi"
+                                                        type="text" name="" placeholder="Deskripsi"
                                                         value="">
                                                 </td>
 
                                                 <td class="ps-0">
                                                     <input class="form-control form-control-solid" id="harga"
-                                                        type="text" name="harga" placeholder="Harga"
-                                                        value="">
+                                                        type="text" name="harga" placeholder="Harga" value="">
                                                 </td>
                                                 <td class="ps-0">
                                                     <button type="button" class="btn btn-success"
@@ -156,7 +159,6 @@
                                             <!--begin::Table head-->
                                             <thead>
                                                 <tr class="border-bottom fs-7 fw-bolder text-gray-700 text-uppercase">
-                                                    <th style="display: none;">id_project</th>
                                                     <th class="min-w-200 w-300">Deskripsi</th>
                                                     <th class="min-w-100 w-200">Harga</th>
                                                     <th class="min-w-75px w-75px text-end">Action</th>
@@ -192,16 +194,15 @@
                                     </div>
 
                                     <div class="separator separator-dashed my-10"></div>
-                                        <!--begin::Action buttons-->
-                                        <div class="d-flex justify-content-end">
-                                            <!--begin::Button-->
-                                            <button class="btn btn-light me-3"><a
-                                                    href="">Cancel</a></button>
-                                            <!--end::Button-->
-                                            <!--begin::Button-->
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                            <!--end::Button-->
-                                        </div>
+                                    <!--begin::Action buttons-->
+                                    <div class="d-flex justify-content-end">
+                                        <!--begin::Button-->
+                                        <button class="btn btn-light me-3"><a href="">Cancel</a></button>
+                                        <!--end::Button-->
+                                        <!--begin::Button-->
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <!--end::Button-->
+                                    </div>
                                 </div>
                                 <!--end::Wrapper-->
                             </form>
@@ -226,13 +227,46 @@
 <script>
     $(document).ready(function() {
         // const data = [];
+
+        function maskingNumber() {
+            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
+            $('#harga').val(formatNumber(totalharga));
+        }
+
         function formatNumber(number) {
             return number.toLocaleString('id-ID', {
                 maximumFractionDigits: 2
             });
         }
 
+        function calculateTotal() {
 
+            var harga = parseFloat($('#harga').val().replaceAll('.', '') || 0);
+            var qty = parseFloat($('#qty').val() || 0);
+
+
+
+            // Calculate subtotal
+            var total_harga = qty * harga;
+            $('#total_harga').val(formatNumber(total_harga));
+
+        }
+
+        $('#harga, #qty').on('input', function() {
+            calculateTotal();
+        });
+        $('#harga').on('input', function() {
+            maskingNumber();
+        });
+        $('#form').on('submit', function() {
+            const data = getTableData();
+            console.log(data);
+        });
+        var invoiceDate = $(form.querySelector('[name="tanggal"]'));
+        invoiceDate.flatpickr({
+            enableTime: false,
+            dateFormat: "Y-m-d",
+        });
     });
 
 
@@ -241,45 +275,93 @@
         return parseFloat(value.replace('Rp ', '').replace(',', ''));
     }
 
-    function tableToJSON(table) {
-        var data = [];
-        var headers = [];
 
-        // Get headers
-        for (var i = 0; i < table.rows[0].cells.length; i++) {
-            headers[i] = table.rows[0].cells[i].textContent.toLowerCase();
-        }
+    // function getTableData() {
+    //     // document.getElementById("tableData").value = tableToJSON();
+    //     // console.log(tableToJSON(document.getElementById('itemTable')))
+    //     document.getElementById("tableData").value = formatTableToJson(document.getElementById('itemTable'))
+    //     console.log(formatTableToJson(document.getElementById('itemTable')))
+    // }
 
-        // Iterate through rows (start from index 1 to skip the header row)
+
+
+    function pushItemToArray() {
+        var table = document.getElementById("itemTable");
+        var dataArray = [];
+
+        // Iterate over rows in the table
         for (var i = 1; i < table.rows.length; i++) {
             var row = table.rows[i];
             var rowData = {};
 
-            // Iterate through cells
-            for (var j = 0; j < row.cells.length; j++) {
-                rowData[headers[j]] = row.cells[j].textContent;
+            // Iterate over cells in the row
+            for (var j = 0; j < row.cells.length - 1; j++) { // Exclude the last cell containing the delete button
+                var cell = row.cells[j];
+                var cellText = cell.textContent.trim(); // Get the trimmed text content of the cell
+                var columnHeader = table.rows[0].cells[j].textContent.trim(); // Get the corresponding header text
+
+                // If the cell is in column 5 or 6, trim any word and periods
+                if (j === 1) {
+                    cellText = cellText.replace(/Rp|\./g, "");
+                }
+
+                // Add the cell value to the rowData object with the header as key
+                rowData[columnHeader] = cellText;
             }
 
-            data.push(rowData);
+            // Push rowData object to the dataArray
+            dataArray.push(rowData);
+
         }
-
-        return JSON.stringify(data);
-
+        console.log(dataArray);
+        return dataArray;
     }
 
-    function getTableData() {
-        document.getElementById("tableData").value = tableToJSON(document.getElementById('itemTable'))
-        console.log(tableToJSON(document.getElementById('itemTable')))
+    function refetch() {
+        // Data JSON dari variabel atau sumber data lainnya
+        var jsonString = document.getElementById("tableData").value;
+
+        // Parse the JSON string into a JSON object
+        var jsonData = JSON.parse(jsonString);
+        console.log(jsonData)
+
+        // Ambil tabel HTML
+        var table = document.getElementById("itemTable");
+
+        for (var index = 0; index < jsonData.length; index++) {
+            (function(index) {
+                var item = jsonData[index];
+                // Buat baris baru dalam tabel
+                var row = table.insertRow();
+
+                // Masukkan nilai-nilai ke dalam sel-sel baris tersebut
+                var cell0 = row.insertCell(0);
+                var cell1 = row.insertCell(1);
+                var cell2 = row.insertCell(2);
+
+                cell0.textContent = item.Deskripsi;
+                var hargaFormatted = parseFloat(item.Harga).toLocaleString('id-ID');
+                cell1.textContent = 'Rp. ' + hargaFormatted;
+                cell2.innerHTML =
+                    '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteOldRow(this)">Delete</button>';
+                cell2.setAttribute("data-index", index); // Set custom attribute to store the index
+            })(index);
+        }
+        // console.log(document.getElementById("tableData").value)
     }
+
+
+    window.onload = function() {
+        refetch();
+        updateTotals();
+    };
+
 
     function addRow() {
         // const data = [];
         // Get values from the input fields
-        var project_id = document.getElementById("project_id");
         var deskripsi = document.getElementById("deskripsi");
         var harga = document.getElementById("harga");
-
-        // data.push({id:id,nama:nama,merk:merk,qty:qty,uom:uom,harga:harga,total_harga});
 
         // Create a new row in the table
         var table = document.getElementById("itemTable");
@@ -287,33 +369,63 @@
         var cell0 = row.insertCell(0);
         var cell1 = row.insertCell(1);
         var cell2 = row.insertCell(2);
-        var cell3 = row.insertCell(3);
+
         // Disable the input fields after adding an item
         // document.getElementById("id_supplier").value = document.getElementById('id_supp').value
         // document.getElementById("tanggal").readOnly = true;
 
         // document.getElementById("id_supp").disabled = true;
         // document.getElementById("jatuh_tempo").readOnly = true;
+        // Get existing table data (if any)
 
         // Set the cell values
-        cell0.innerHTML = project_id.value;
-        cell0.style.display = 'none'; // This will hide the cell
-        cell1.innerHTML = deskripsi.value;
-        cell2.innerHTML = 'Rp ' + harga.value;
-        cell3.innerHTML = '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
+        cell0.innerHTML = deskripsi.value;
+        cell1.innerHTML = 'Rp. ' + harga.value;
+        cell2.innerHTML =
+            '<button type="button" class="btn btn-danger btn-sm mt-4" onclick="deleteRow(this)">Delete</button>';
 
         // Clear input fields after adding a row
         deskripsi.value = "";
         harga.value = "";
 
-        // getTableData();
+        // Call pushItemToArray to get the table data as an array of objects
+
+        var tableDataArray = pushItemToArray();
+
+        // Convert the array of objects to a JSON string
+        var jsonDataString = JSON.stringify(tableDataArray);
+
+        // Set the JSON string as the value of the hidden input field
+        document.getElementById("tableData").value = jsonDataString;
+
         updateTotals();
+    }
+
+
+    function deleteOldRow(btn) {
+
+        var dataIndex = btn.parentNode.getAttribute("data-index"); // Get the custom data-index attribute value
+        var tableData = JSON.parse(document.getElementById("tableData").value);
+
+        // Delete the row from the table
+        var row = btn.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+
+        // Remove the corresponding item from the jsonData array
+        tableData.splice(dataIndex, 1);
+
+        // Update the value of tableData input with the modified jsonData array
+        document.getElementById("tableData").value = JSON.stringify(tableData);
+
+        updateTotals(); // Call the function to update totals if needed
     }
 
     function deleteRow(btn) {
         // Delete the row from the table
         var row = btn.parentNode.parentNode;
+
         row.parentNode.removeChild(row);
+
         updateTotals();
 
     }
@@ -327,42 +439,23 @@
     function updateTotals() {
         // Update totals
         var table = document.getElementById("itemTable");
-        var totalHarga = 0;
+        var subTotal = 0;
 
         for (var i = 0, row; row = table.rows[i]; i++) {
+            // console.log(row.cells[5].innerText.substring(3).replaceAll('.', ''));
             // Skip the header row
             if (i === 0) {
                 continue;
             }
 
-            var harga = parseFloat(row.cells[2].innerText.replace('Rp ', '').replaceAll('.', ''));
+            var sub = parseFloat(row.cells[1].innerText.substring(3).replaceAll('.', ''));
 
-            totalHarga += harga;
+            subTotal += sub;
+
         }
 
         // Display totals
-        document.getElementById("total").value = 'Rp ' + formatNumber(totalHarga);
+        document.getElementById("total").value = 'Rp ' + formatNumber(subTotal);
+
     }
-</script>
-<script>
-    $(document).ready(function() {
-        function formatNumber(number) {
-            return number.toLocaleString('id-ID', {
-                maximumFractionDigits: 0
-            });
-        }
-
-        function maskingNumber() {
-            var totalharga = parseInt($('#harga').val().replace(/\D/g, ''), 10);
-            $('#harga').val(formatNumber(totalharga));
-        }
-
-        $('#harga').on('input', function() {
-            maskingNumber();
-        });
-        $('#form').on('submit', function() {
-            var totalharga = $('#harga').val().replaceAll('.', '');
-            $('#harga').val(totalharga)
-        });
-    });
 </script>
