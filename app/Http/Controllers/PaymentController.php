@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\Project\Payment\StorePaymentRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,13 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePaymentRequest $request)
     {
         //
+        $payment = $request->validated();
+        Payment::insert($payment);
+        return redirect()->route('admin.project.project.index');
+
     }
 
     /**
