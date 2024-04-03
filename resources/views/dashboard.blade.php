@@ -131,6 +131,26 @@
                                     <!--end::Svg Icon-->Rp. {{ number_format($lowestProfit, 0, ',', '.') }}
                                 </div>
                             </div>
+                            <div class="separator separator-dashed"></div>
+                            <div class="fs-6 d-flex justify-content-between my-4">
+                                <div class="fw-bold">Highest Project Income</div>
+                                <div class="d-flex fw-bolder">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr006.svg-->
+                                    <span class="svg-icon svg-icon-3 me-1 svg-icon-danger">
+                                        <span class="svg-icon svg-icon-3 me-1 svg-icon-success">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none">
+                                                <path
+                                                    d="M13.4 10L5.3 18.1C4.9 18.5 4.9 19.1 5.3 19.5C5.7 19.9 6.29999 19.9 6.69999 19.5L14.8 11.4L13.4 10Z"
+                                                    fill="currentColor"></path>
+                                                <path opacity="0.3" d="M19.8 16.3L8.5 5H18.8C19.4 5 19.8 5.4 19.8 6V16.3Z"
+                                                    fill="currentColor"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <!--end::Svg Icon-->Rp. {{ number_format($highestProfit, 0, ',', '.') }}
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -200,9 +220,19 @@
                                 <!--end::Car Title-->
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar">
-                                    <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3"><i
-                                            class="badge-light-primary fas fa-spinner fa-spin"></i>&nbsp;&nbsp;&nbsp;In
-                                        Progress</span>
+                                    @if ($project->progress >= 0 && $project->progress < 50)
+                                        <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3"><i
+                                                class="badge-light-primary fas fa-spinner fa-spin"></i>&nbsp;&nbsp;&nbsp;In
+                                            Progress</span>
+                                    @elseif ($project->progress >= 50 && $project->progress < 100)
+                                        <span class="badge badge-light-warning fw-bolder me-auto px-4 py-3"><i
+                                                class="badge-light-warning fas fa-circle-notch fa-spin"></i>&nbsp;&nbsp;&nbsp;Halfway
+                                            Done</span>
+
+                                    @elseif ($project->progress == 100)
+                                        <span class="badge badge-light-success fw-bolder me-auto px-4 py-3"><i
+                                                class="badge-light-success fas fa-check fa-fade"></i>&nbsp;&nbsp;&nbsp;Completed</span>
+                                    @endif
                                 </div>
                                 <!--end::Card toolbar-->
                             </div>
@@ -234,9 +264,20 @@
                                 </div>
                                 <!--end::Info-->
                                 <!--begin::Progress-->
-                                {{-- <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project 50% completed">
-                                    <div class="bg-primary rounded h-4px" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div> --}}
+                                @if ($project->progress >= 0 && $project->progress < 50)
+                                <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project {{$project->progress}}% completed">
+                                    <div class="bg-primary rounded h-4px" role="progressbar" style="width: {{$project->progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                @elseif ($project->progress >= 50 && $project->progress < 100)
+                                <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project {{$project->progress}}% completed">
+                                    <div class="bg-warning rounded h-4px" role="progressbar" style="width: {{$project->progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                @elseif ($project->progress == 100)
+                                <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="" data-bs-original-title="This project {{$project->progress}}% completed">
+                                    <div class="bg-success rounded h-4px" role="progressbar" style="width: {{$project->progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                @endif
+
                                 <!--end::Progress-->
                                 <!--begin::Users-->
                                 {{-- <div class="symbol-group symbol-hover">
@@ -282,34 +323,39 @@
     </div>
     <script>
         var KTProjectList = {
-            init: function () {
-                !(function () {
+            init: function() {
+                !(function() {
                     var t = document.getElementById("kt_project_list_chart");
                     if (t) {
                         var e = t.getContext("2d");
                         new Chart(e, {
                             type: "doughnut",
                             data: {
-                                datasets: [
-                                    {
-                                        data: @json($data['data']),
-                                        backgroundColor: [
-                                            "#00A3FF",
-                                            "#FF3131",
-                                            "#50CD89",
-                                        ],
-                                    },
-                                ],
+                                datasets: [{
+                                    data: @json($data['data']),
+                                    backgroundColor: [
+                                        "#00A3FF",
+                                        "#FF3131",
+                                        "#50CD89",
+                                    ],
+                                }, ],
                                 labels: @json($data['labels']),
                             },
                             options: {
-                                chart: { fontFamily: "inherit" },
+                                chart: {
+                                    fontFamily: "inherit"
+                                },
                                 cutout: "75%",
                                 cutoutPercentage: 65,
                                 responsive: !0,
                                 maintainAspectRatio: !1,
-                                title: { display: !1 },
-                                animation: { animateScale: !0, animateRotate: !0 },
+                                title: {
+                                    display: !1
+                                },
+                                animation: {
+                                    animateScale: !0,
+                                    animateRotate: !0
+                                },
                                 tooltips: {
                                     enabled: !0,
                                     intersect: !1,
@@ -325,16 +371,19 @@
                                     footerSpacing: 0,
                                     titleSpacing: 0,
                                 },
-                                plugins: { legend: { display: !1 } },
+                                plugins: {
+                                    legend: {
+                                        display: !1
+                                    }
+                                },
                             },
                         });
                     }
                 })();
             },
         };
-        KTUtil.onDOMContentLoaded(function () {
+        KTUtil.onDOMContentLoaded(function() {
             KTProjectList.init();
         });
-        </script>
+    </script>
 @endsection
-

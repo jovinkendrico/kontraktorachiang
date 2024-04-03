@@ -26,6 +26,9 @@ class DashboardController extends Controller
         $lowestProfit = $projects->min(function ($project) {
             return $project->getProfit();
         });
+        $highestProfit = $projects->max(function ($project) {
+            return $project->getProfit();
+        });
         foreach ($projects as $project) {
             $profit += $project->getProfit();
         }
@@ -33,6 +36,6 @@ class DashboardController extends Controller
             'data' => [$activeProject , 2, 4],
         ];
         $averageProfit = $profit / $activeProject;
-        return view('dashboard', compact('projectLists','projects', 'jumlahProject', 'deletedProject', 'activeProject', 'profit', 'averageProfit', 'lowestProfit','data'));
+        return view('dashboard', compact('projectLists','projects', 'jumlahProject', 'deletedProject', 'activeProject', 'profit', 'averageProfit', 'lowestProfit','highestProfit','data'));
     }
 }

@@ -13,7 +13,7 @@ class Project extends Model
 
     protected $table = 'projects';
 
-    protected $fillable = ['nama', 'lokasi', 'totalharga'];
+    protected $fillable = ['nama', 'lokasi', 'totalharga','progress'];
 
 
     public function pembelianbarang(): HasMany

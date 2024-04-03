@@ -28,6 +28,7 @@ class UpdateProjectRequest extends FormRequest
             'nama' => 'required',
             'lokasi' => 'required',
             'totalharga' => 'required',
+            'progress' => 'required',
         ];
     }
 }
