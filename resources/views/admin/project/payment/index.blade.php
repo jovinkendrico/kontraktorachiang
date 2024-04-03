@@ -155,7 +155,7 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$payment->id" :route="route('admin.project.payment.delete', $payment->id)" :model="$payment" :modelAttribute="'deskripsi'" />
+                                <x-confirm-delete :id="$payment->id" :route="route('admin.project.payment.delete', $payment->id)" :model="$payment" :modelAttribute="'{{$payment->project->nama}}'" />
                             @endforeach
                         </tbody>
                         <!--end::Table body-->

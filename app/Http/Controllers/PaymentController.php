@@ -69,5 +69,7 @@ class PaymentController extends Controller
     public function destroy(string $id)
     {
         //
+        Payment::findOrFail($id)->delete();
+        return redirect()->route('admin.project.payment.index');
     }
 }
