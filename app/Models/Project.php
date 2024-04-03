@@ -57,6 +57,17 @@ class Project extends Model
         return $this->totalharga - $this->getTotalPembelian() - $this->getTotalJasa();
     }
 
+    public function getTotalPayment()
+    {
+        $total = 0;
+
+        foreach ($this->payment as $detail) {
+            $total += $detail->total_bayar;
+        }
+
+        return $total;
+    }
+
     public function countRows()
     {
         return self::count();

@@ -71,6 +71,7 @@
                                 <th class="min-w-125px">Tanggal</th>
                                 <th class="min-w-125px">Project</th>
                                 <th class="min-w-125px">Total Bayar</th>
+                                <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -83,6 +84,9 @@
                                 <tr class="text-start">
                                     <td>
                                         {{ $loop->iteration }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        {{ $payment->tanggal }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         {{ $payment->project->nama }}
@@ -151,7 +155,7 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-confirm-delete :id="$kaskeluar->id" :route="route('admin.project.kaskeluar.delete', $kaskeluar->id)" :model="$kaskeluar" :modelAttribute="'deskripsi'" />
+                                <x-confirm-delete :id="$payment->id" :route="route('admin.project.payment.delete', $payment->id)" :model="$payment" :modelAttribute="'deskripsi'" />
                             @endforeach
                         </tbody>
                         <!--end::Table body-->
