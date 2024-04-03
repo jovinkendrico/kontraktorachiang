@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Laporan;
 
-use App\Http\Requests\Admin\Project\Payment\StorePaymentRequest;
-use App\Models\Payment;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class PaymentController extends Controller
+class LaporanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,11 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        $payment_menu = 'active';
-        $payments = Payment::all();
-        return view('admin.project.payment.index', compact('payments','payment_menu'));
+        $laporan_acc = 'here show';
+        $laporan_menu = 'active';
+        $projects = Project::withTrashed()->get();
+
+        return view('admin.project.laporan.index', compact('laporan_acc','laporan_menu','projects'));
     }
 
     /**
@@ -30,13 +32,9 @@ class PaymentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePaymentRequest $request)
+    public function store(Request $request)
     {
         //
-        $payment = $request->validated();
-        Payment::insert($payment);
-        return redirect()->route('admin.project.project.index');
-
     }
 
     /**
@@ -69,7 +67,5 @@ class PaymentController extends Controller
     public function destroy(string $id)
     {
         //
-        Payment::findOrFail($id)->delete();
-        return redirect()->route('admin.project.payment.index');
     }
 }
