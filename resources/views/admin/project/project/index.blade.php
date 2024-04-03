@@ -185,7 +185,9 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
+
                                 <x-confirm-delete :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
+                                <x-payment :id="$project->id" :route="route('admin.project.payment.store', $project->id)" :model="$project" :modelAttribute="'nama'" />
                             @endforeach
                         </tbody>
                         <!--end::Table body-->
