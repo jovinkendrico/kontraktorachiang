@@ -178,6 +178,7 @@
     <!--begin::Global Javascript Bundle(used by all pages)-->
     <script src="/Template/dist/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/Template/dist/assets/js/scripts.bundle.js"></script>
+    <script src="/Template/dist/assets/js/custom/apps/projects/list/list.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Page Vendors Javascript(used by this page)-->
     <script src="/Template/dist/assets/plugins/custom/datatables/datatables.bundle.js"></script>

@@ -56,5 +56,9 @@ class Project extends Model
     {
         return $this->totalharga - $this->getTotalPembelian() - $this->getTotalJasa();
     }
-}
 
+    public function countRows()
+    {
+        return self::count();
+    }
+}

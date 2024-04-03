@@ -35,4 +35,12 @@ class PembelianBarang extends Model
 
         return $totalHarga;
     }
+
+    public function getTotalHargaAll(){
+        $totalHarga = 0;
+        foreach ($this->getTotalHarga as $total){
+            $totalHarga += $total;
+        }
+        return $totalHarga;
+    }
 }
