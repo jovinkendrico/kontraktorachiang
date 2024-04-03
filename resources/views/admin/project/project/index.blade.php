@@ -72,6 +72,7 @@
                                 <th class="min-w-125px">Total Harga</th>
                                 <th class="min-w-200px">Total Pembelian Barang</th>
                                 <th class="min-w-125px">Total Jasa</th>
+                                <th class="min-w-125px">Total Payment</th>
                                 <th class="min-w-125px">Profit</th>
                                 <th class="min-w-125px">Status</th>
                                 <th class="min-w-125px">Actions</th>
@@ -101,6 +102,9 @@
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         Rp. {{ number_format($project->getTotalJasa(), 0, ',', '.') }}
+                                    </td>
+                                    <td class="text-gray-800 text-hover-primary mb-1">
+                                        Rp. {{ number_format($project->getTotalPayment(), 0, ',', '.') }}
                                     </td>
                                     <td class="text-gray-800 text-hover-primary mb-1">
                                         Rp. {{ number_format($project->getProfit(), 0, ',', '.') }}
