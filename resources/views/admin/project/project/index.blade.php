@@ -1,6 +1,6 @@
 @extends('layouts.temp')
 
-@section('title', 'Project')
+@section('title', 'Pembelian Barang')
 @section('content')
     <!--begin::Toolbar-->
     <div class="toolbar" id="kt_toolbar">
@@ -11,7 +11,7 @@
                 data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
                 class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Project</h1>
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">List Projects</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-300 border-start mx-4"></span>
@@ -19,7 +19,7 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            
+
             <!--end::Actions-->
         </div>
         <!--end::Container-->
@@ -51,8 +51,9 @@
                             <!--end::Select2-->
                         </div>
                         <!--begin::Add product-->
-                        <a href="{{ route('admin.project.project.create') }}" class="btn btn-primary">Add
-                            Project</a>
+                        <a href="{{ route('admin.project.project.create') }}"
+                            class="btn btn-primary">Add
+                           Project</a>
                         <!--end::Add product-->
                     </div>
                     <!--end::Card toolbar-->
@@ -116,7 +117,6 @@
                                         @else
                                             <div class="badge badge-light-danger">Lock</div>
                                         @endif
-
                                     </td>
                                     <!--end::SKU=-->
                                     <!--begin::Action=-->
@@ -139,53 +139,52 @@
                                             <!--begin::Menu item-->
                                             <!--begin::Badges-->
                                             @if (is_null($project->deleted_at))
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
-                                                        class="menu-link px-3">Show</a>
-                                                </div>
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
-                                                        class="menu-link px-3">Pembelian</a>
-                                                </div>
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.kaskeluar.index', $project->id) }}"
-                                                        class="menu-link px-3">Kas Keluar</a>
-                                                </div>
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.edit', $project->id) }}"
-                                                        class="menu-link px-3">Edit</a>
-                                                </div>
-                                                <div class="menu-item px-3 mb-2">
-                                                    <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#delete{{ $project->id }}"
-                                                        class="btn btn-danger btn-sm delete">
-                                                        <i class="fas fa-trash"></i>Delete
-                                                    </button>
-                                                </div>
-                                                <div class="menu-item px-3">
-                                                    <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#payment{{ $project->id }}"
-                                                        class="btn btn-success btn-sm delete">
-                                                        <i class="fas fa-receipt"></i>Pay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    </button>
-                                                </div>
-                                            @else
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.show', $project->id) }}"
-                                                        class="menu-link px-3">Show</a>
-                                                </div>
-                                                <div class="menu-item px-3">
-                                                    <a href="{{ route('admin.project.project.restore', $project->id) }}"
-                                                        class="menu-link px-3">Restore</a>
-                                                </div>
-                                            @endif
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.project.show', $project->id) }}"
+                                                    class="menu-link px-3">Show</a>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.pembelianbarang.index', $project->id) }}"
+                                                    class="menu-link px-3">Pembelian</a>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.kaskeluar.index', $project->id) }}"
+                                                    class="menu-link px-3">Kas Keluar</a>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.project.edit', $project->id) }}"
+                                                    class="menu-link px-3">Edit</a>
+                                            </div>
+                                            <div class="menu-item px-3 mb-2">
+                                                <button type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#delete{{ $project->id }}"
+                                                    class="btn btn-danger btn-sm delete">
+                                                    <i class="fas fa-trash"></i>Delete
+                                                </button>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <button type="button" data-bs-toggle="modal"
+                                                    data-bs-target="#payment{{ $project->id }}"
+                                                    class="btn btn-success btn-sm delete">
+                                                    <i class="fas fa-receipt"></i>Pay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                </button>
+                                            </div>
+                                        @else
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.project.show', $project->id) }}"
+                                                    class="menu-link px-3">Show</a>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <a href="{{ route('admin.project.project.restore', $project->id) }}"
+                                                    class="menu-link px-3">Restore</a>
+                                            </div>
+                                        @endif
                                             <!--end::Menu item-->
                                         </div>
                                         <!--end::Menu-->
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
-                                <x-payment :id="$project->id" :route="route('admin.project.payment.store')" :model="$project" :modelAttribute="'nama'" />
                                 <x-confirm-delete :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
                             @endforeach
                         </tbody>

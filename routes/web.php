@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\Laporan\LaporanController;
 use App\Http\Controllers\Admin\Master\BarangController;
 use App\Http\Controllers\Admin\Project\KasKeluarController;
 use App\Http\Controllers\Admin\Project\PembelianBarangController;
@@ -71,4 +72,15 @@ Route::controller(PaymentController::class)->middleware('auth')->prefix('admin/p
     Route::put('/update/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('delete');
 });
+
+Route::controller(LaporanController::class)->middleware('auth')->prefix('admin/project/laporan')->name('admin.project.laporan.')->group(function () {
+    Route::get('/index', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/show/{id}', 'show')->name('show');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::put('/update/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('delete');
+});
+
 require __DIR__ . '/auth.php';
