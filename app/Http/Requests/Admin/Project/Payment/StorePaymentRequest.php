@@ -11,7 +11,7 @@ class StorePaymentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,9 @@ class StorePaymentRequest extends FormRequest
     {
         return [
             //
+            'tanggal' => 'required',
+            'project_id' => 'required',
+            'total_bayar' => 'required',
         ];
     }
 }
