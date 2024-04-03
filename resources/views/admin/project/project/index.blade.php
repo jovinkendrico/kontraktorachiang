@@ -19,7 +19,7 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-
+            
             <!--end::Actions-->
         </div>
         <!--end::Container-->
@@ -166,8 +166,7 @@
                                                     <button type="button" data-bs-toggle="modal"
                                                         data-bs-target="#payment{{ $project->id }}"
                                                         class="btn btn-success btn-sm delete">
-                                                        <i
-                                                            class="fas fa-receipt"></i>Pay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <i class="fas fa-receipt"></i>Pay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     </button>
                                                 </div>
                                             @else

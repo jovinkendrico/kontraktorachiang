@@ -196,7 +196,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link {{ !empty($project_menu) ? $project_menu : '' }}"
+                            <a class="menu-link {{ !empty($payment_menu) ? $payment_menu : '' }}"
                                 href="{{ route('admin.project.payment.index') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>

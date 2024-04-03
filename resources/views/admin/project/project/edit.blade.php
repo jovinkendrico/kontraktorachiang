@@ -67,6 +67,11 @@
                                     value=" {{old('totalharga') ?? $project->totalharga }} " />
                                 <x-forms.input-error name="totalharga" />
 
+                                <x-forms.input :id="'progress'" label="Progress" :required="'required'" :name="'progress'"
+                                    :type="'text'" :placeholder="'Masukkan Progress...'" :func="''" :isiFunc="''"
+                                    value=" {{old('progress') ?? $project->progress }} " />
+                                <x-forms.input-error name="progress" />
+
                             </div>
                         </div>
                         <!--end::Input group-->

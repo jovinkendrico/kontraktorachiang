@@ -14,8 +14,9 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $payment_menu = 'active';
         $payments = Payment::all();
-        return view('admin.project.payment.index', compact('payments'));
+        return view('admin.project.payment.index', compact('payments','payment_menu'));
     }
 
     /**

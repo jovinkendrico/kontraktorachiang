@@ -65,6 +65,11 @@
                                     :value=" old('totalharga') !== null ? old('totalharga') : '' " />
                                 <x-forms.input-error name="totalharga" />
 
+                                <x-forms.input :id="'progress'" label="Progress" :required="'required'" :name="'progress'"
+                                    :type="'text'" :placeholder="'Masukkan Progress...'" :func="''" :isiFunc="''"
+                                    :value=" old('progress') !== null ? old('progress') : '0' " />
+                                <x-forms.input-error name="progress" />
+
                             </div>
                         </div>
                         <!--end::Input group-->
