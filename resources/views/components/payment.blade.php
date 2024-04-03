@@ -46,26 +46,3 @@
         </div>
     </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        function formatNumber(number) {
-            return number.toLocaleString('id-ID', {
-                maximumFractionDigits: 0
-            });
-        }
-
-        function maskingNumber() {
-            var total_bayar = parseInt($('#total_bayar').val().replace(/\D/g, ''), 10);
-            $('#total_bayar').val(formatNumber(total_bayar));
-        }
-
-        $('#total_bayar').on('input', function() {
-            maskingNumber();
-        });
-        $('#form').on('submit', function() {
-            var total_bayar = $('#total_bayar').val().replaceAll('.', '');
-            $('#total_bayar').val(total_bayar)
-        });
-    });
-</script>
