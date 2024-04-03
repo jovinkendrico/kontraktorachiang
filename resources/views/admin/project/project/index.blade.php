@@ -151,11 +151,18 @@
                                                     <a href="{{ route('admin.project.project.edit', $project->id) }}"
                                                         class="menu-link px-3">Edit</a>
                                                 </div>
-                                                <div class="menu-item px-3">
+                                                <div class="menu-item px-3 mb-2">
                                                     <button type="button" data-bs-toggle="modal"
                                                         data-bs-target="#delete{{ $project->id }}"
                                                         class="btn btn-danger btn-sm delete">
                                                         <i class="fas fa-trash"></i>Delete
+                                                    </button>
+                                                </div>
+                                                <div class="menu-item px-3">
+                                                    <button type="button" data-bs-toggle="modal"
+                                                        data-bs-target="#payment{{ $project->id }}"
+                                                        class="btn btn-success btn-sm delete">
+                                                        <i class="fas fa-receipt"></i>Pay&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     </button>
                                                 </div>
                                             @else
@@ -174,6 +181,7 @@
                                     </td>
                                     <!--end::Action=-->
                                 </tr>
+                                <x-payment :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
                                 <x-confirm-delete :id="$project->id" :route="route('admin.project.project.delete', $project->id)" :model="$project" :modelAttribute="'nama'" />
                             @endforeach
                         </tbody>
