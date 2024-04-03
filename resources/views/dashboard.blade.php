@@ -28,7 +28,10 @@
     <!--end::Toolbar-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
-        <div id="kt_content_container" class="container-xxl"><div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+        <div id="kt_content_container" class="container-xxl">
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend"
+                data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}"
+                class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
                 <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">My Projects</h1>
                 <!--end::Title-->
@@ -52,7 +55,8 @@
                             <div class="d-flex flex-wrap">
                                 <!--begin::Chart-->
                                 <div class="d-flex flex-center h-100px w-100px me-9 mb-5">
-                                    <canvas id="kt_project_list_chart" width="200" height="200" style="display: block; box-sizing: border-box; height: 100px; width: 100px;"></canvas>
+                                    <canvas id="kt_project_list_chart" width="200" height="200"
+                                        style="display: block; box-sizing: border-box; height: 100px; width: 100px;"></canvas>
                                 </div>
                                 <!--end::Chart-->
                                 <!--begin::Labels-->
@@ -76,13 +80,6 @@
                                         <div class="ms-auto fw-bolder text-gray-700">0</div>
                                     </div>
                                     <!--end::Label-->
-                                    <!--begin::Label-->
-                                    <div class="d-flex fs-6 fw-bold align-items-center">
-                                        <div class="bullet bg-gray-300 me-3"></div>
-                                        <div class="text-gray-400">Yet to start</div>
-                                        <div class="ms-auto fw-bolder text-gray-700">0</div>
-                                    </div>
-                                    <!--end::Label-->
                                 </div>
                                 <!--end::Labels-->
                             </div>
@@ -101,27 +98,38 @@
                             <div class="fs-6 d-flex justify-content-between mb-4">
                                 <div class="fw-bold">Avg. Project Income</div>
                                 <div class="d-flex fw-bolder">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr007.svg-->
-                                <span class="svg-icon svg-icon-3 me-1 svg-icon-success">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M13.4 10L5.3 18.1C4.9 18.5 4.9 19.1 5.3 19.5C5.7 19.9 6.29999 19.9 6.69999 19.5L14.8 11.4L13.4 10Z" fill="currentColor"></path>
-                                        <path opacity="0.3" d="M19.8 16.3L8.5 5H18.8C19.4 5 19.8 5.4 19.8 6V16.3Z" fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->Rp. {{ number_format($averageProfit, 0, ',', '.') }}</div>
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr007.svg-->
+                                    <span class="svg-icon svg-icon-3 me-1 svg-icon-success">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M13.4 10L5.3 18.1C4.9 18.5 4.9 19.1 5.3 19.5C5.7 19.9 6.29999 19.9 6.69999 19.5L14.8 11.4L13.4 10Z"
+                                                fill="currentColor"></path>
+                                            <path opacity="0.3" d="M19.8 16.3L8.5 5H18.8C19.4 5 19.8 5.4 19.8 6V16.3Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->Rp. {{ number_format($averageProfit, 0, ',', '.') }}
+                                </div>
                             </div>
                             <div class="separator separator-dashed"></div>
                             <div class="fs-6 d-flex justify-content-between my-4">
                                 <div class="fw-bold">Lowest Project Income</div>
                                 <div class="d-flex fw-bolder">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr006.svg-->
-                                <span class="svg-icon svg-icon-3 me-1 svg-icon-danger">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <path d="M13.4 14.8L5.3 6.69999C4.9 6.29999 4.9 5.7 5.3 5.3C5.7 4.9 6.29999 4.9 6.69999 5.3L14.8 13.4L13.4 14.8Z" fill="currentColor"></path>
-                                        <path opacity="0.3" d="M19.8 8.5L8.5 19.8H18.8C19.4 19.8 19.8 19.4 19.8 18.8V8.5Z" fill="currentColor"></path>
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->Rp. {{ number_format($lowestProfit, 0, ',', '.') }}</div>
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr006.svg-->
+                                    <span class="svg-icon svg-icon-3 me-1 svg-icon-danger">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M13.4 14.8L5.3 6.69999C4.9 6.29999 4.9 5.7 5.3 5.3C5.7 4.9 6.29999 4.9 6.69999 5.3L14.8 13.4L13.4 14.8Z"
+                                                fill="currentColor"></path>
+                                            <path opacity="0.3"
+                                                d="M19.8 8.5L8.5 19.8H18.8C19.4 19.8 19.8 19.4 19.8 18.8V8.5Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->Rp. {{ number_format($lowestProfit, 0, ',', '.') }}
+                                </div>
                             </div>
 
                         </div>
@@ -151,7 +159,8 @@
             <div class="d-flex flex-wrap flex-stack my-5">
                 <!--begin::Heading-->
                 <h2 class="fs-2 fw-bold my-2">Projects
-                <span class="fs-6 text-gray-400 ms-1">by Status</span></h2>
+                    <span class="fs-6 text-gray-400 ms-1">by Status</span>
+                </h2>
                 <!--end::Heading-->
                 <!--begin::Controls-->
                 {{-- <div class="d-flex flex-wrap my-1">
@@ -191,7 +200,9 @@
                                 <!--end::Car Title-->
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar">
-                                    <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3"><i class="badge-light-primary fas fa-spinner fa-spin"></i>&nbsp;&nbsp;&nbsp;In Progress</span>
+                                    <span class="badge badge-light-primary fw-bolder me-auto px-4 py-3"><i
+                                            class="badge-light-primary fas fa-spinner fa-spin"></i>&nbsp;&nbsp;&nbsp;In
+                                        Progress</span>
                                 </div>
                                 <!--end::Card toolbar-->
                             </div>
@@ -199,22 +210,24 @@
                             <!--begin:: Card body-->
                             <div class="card-body p-9">
                                 <!--begin::Name-->
-                                <div class="fs-3 fw-bolder text-dark">{{$project->nama}}</div>
+                                <div class="fs-3 fw-bolder text-dark">{{ $project->nama }}</div>
                                 <!--end::Name-->
                                 <!--begin::Description-->
-                                <p class="text-gray-400 fw-bold fs-5 mt-1 mb-7">{{$project->lokasi}}</p>
+                                <p class="text-gray-400 fw-bold fs-5 mt-1 mb-7">{{ $project->lokasi }}</p>
                                 <!--end::Description-->
                                 <!--begin::Info-->
                                 <div class="d-flex flex-wrap mb-5">
                                     <!--begin::Due-->
-                                    <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
-                                        <div class="fs-6 text-gray-800 fw-bolder">{{$project->tanggal}}</div>
+                                    <div
+                                        class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                                        <div class="fs-6 text-gray-800 fw-bolder">{{ $project->tanggal }}</div>
                                         <div class="fw-bold text-gray-400">Tanggal</div>
                                     </div>
                                     <!--end::Due-->
                                     <!--begin::Budget-->
                                     <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
-                                        <div class="fs-6 text-gray-800 fw-bolder">Rp. {{number_format($project->totalharga, 0, ',', '.')}}</div>
+                                        <div class="fs-6 text-gray-800 fw-bolder">Rp.
+                                            {{ number_format($project->totalharga, 0, ',', '.') }}</div>
                                         <div class="fw-bold text-gray-400">Budget</div>
                                     </div>
                                     <!--end::Budget-->
@@ -249,7 +262,6 @@
                         </a>
                         <!--end::Card-->
                     </div>
-
                 @endforeach
 
                 <!--end::Col-->
@@ -268,61 +280,61 @@
         </div>
         <!--end::Container-->
     </div>
+    <script>
+        var KTProjectList = {
+            init: function () {
+                !(function () {
+                    var t = document.getElementById("kt_project_list_chart");
+                    if (t) {
+                        var e = t.getContext("2d");
+                        new Chart(e, {
+                            type: "doughnut",
+                            data: {
+                                datasets: [
+                                    {
+                                        data: @json($data['data']),
+                                        backgroundColor: [
+                                            "#00A3FF",
+                                            "#FF3131",
+                                            "#50CD89",
+                                        ],
+                                    },
+                                ],
+                                labels: @json($data['labels']),
+                            },
+                            options: {
+                                chart: { fontFamily: "inherit" },
+                                cutout: "75%",
+                                cutoutPercentage: 65,
+                                responsive: !0,
+                                maintainAspectRatio: !1,
+                                title: { display: !1 },
+                                animation: { animateScale: !0, animateRotate: !0 },
+                                tooltips: {
+                                    enabled: !0,
+                                    intersect: !1,
+                                    mode: "nearest",
+                                    bodySpacing: 5,
+                                    yPadding: 10,
+                                    xPadding: 10,
+                                    caretPadding: 0,
+                                    displayColors: !1,
+                                    backgroundColor: "#20D489",
+                                    titleFontColor: "#ffffff",
+                                    cornerRadius: 4,
+                                    footerSpacing: 0,
+                                    titleSpacing: 0,
+                                },
+                                plugins: { legend: { display: !1 } },
+                            },
+                        });
+                    }
+                })();
+            },
+        };
+        KTUtil.onDOMContentLoaded(function () {
+            KTProjectList.init();
+        });
+        </script>
 @endsection
 
-<script>
-    var KTProjectList = {
-    init: function () {
-        !(function () {
-            var t = document.getElementById("kt_project_list_chart");
-            if (t) {
-                var e = t.getContext("2d");
-                new Chart(e, {
-                    type: "doughnut",
-                    data: {
-                        datasets: [
-                            {
-                                data: [30, 45, 25],
-                                backgroundColor: [
-                                    "#00A3FF",
-                                    "#50CD89",
-                                    "#E4E6EF",
-                                ],
-                            },
-                        ],
-                        labels: ["Active", "Completed", "Yet to start"],
-                    },
-                    options: {
-                        chart: { fontFamily: "inherit" },
-                        cutout: "75%",
-                        cutoutPercentage: 65,
-                        responsive: !0,
-                        maintainAspectRatio: !1,
-                        title: { display: !1 },
-                        animation: { animateScale: !0, animateRotate: !0 },
-                        tooltips: {
-                            enabled: !0,
-                            intersect: !1,
-                            mode: "nearest",
-                            bodySpacing: 5,
-                            yPadding: 10,
-                            xPadding: 10,
-                            caretPadding: 0,
-                            displayColors: !1,
-                            backgroundColor: "#20D489",
-                            titleFontColor: "#ffffff",
-                            cornerRadius: 4,
-                            footerSpacing: 0,
-                            titleSpacing: 0,
-                        },
-                        plugins: { legend: { display: !1 } },
-                    },
-                });
-            }
-        })();
-    },
-};
-KTUtil.onDOMContentLoaded(function () {
-    KTProjectList.init();
-});
-</script>

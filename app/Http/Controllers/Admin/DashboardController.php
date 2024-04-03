@@ -30,9 +30,9 @@ class DashboardController extends Controller
             $profit += $project->getProfit();
         }
         $data = ['labels' => ['Active', 'Non Active', 'Completed'],
-            'data' => [25, 30, 15, 10, 20],
+            'data' => [$activeProject , 2, 4],
         ];
         $averageProfit = $profit / $activeProject;
-        return view('dashboard', compact('projectLists','projects', 'jumlahProject', 'deletedProject', 'activeProject', 'profit', 'averageProfit', 'lowestProfit'));
+        return view('dashboard', compact('projectLists','projects', 'jumlahProject', 'deletedProject', 'activeProject', 'profit', 'averageProfit', 'lowestProfit','data'));
     }
 }

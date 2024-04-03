@@ -195,6 +195,15 @@
                                 <span class="menu-title">Project</span>
                             </a>
                         </div>
+                        <div class="menu-item">
+                            <a class="menu-link {{ !empty($project_menu) ? $project_menu : '' }}"
+                                href="{{ route('admin.project.payment.index') }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Payment</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
